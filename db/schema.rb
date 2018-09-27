@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_225514) do
     t.index ["language_id"], name: "index_books_on_language_id"
   end
 
-  create_table "categorys", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "title", null: false
     t.integer "books_count"
   end

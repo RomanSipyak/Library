@@ -1,4 +1,4 @@
-class User < ActiveRecord
+class User < ApplicationRecord
   has_many :bookings, dependent: :nullify
   has_many :estimates, dependent: :destroy
   has_many :books, through: :estimates
