@@ -1,0 +1,9 @@
+class User < ActiveRecord
+  has_many :bookings, dependent: :nullify
+  has_many :estimates, dependent: :destroy
+  has_many :books, through: :estimates
+
+  validates :username, presence: true
+  validates :email, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+end
