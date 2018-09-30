@@ -12,25 +12,115 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<nav class="navbar navbar-inverse navbar-fixed-top float-right">
+
+<body>
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to ' Library ', root_path, class: 'navbar-brand' %>
-      <% if user_signed_in? && current_user.admin %>
-        <%= link_to ' Admin panel ', rails_admin_path, class: 'navbar-brand' %>
-      <% end %>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand"><%= link_to "Home", root_path %></div>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-        <li><%= link_to ' LogOut ', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out' %></li>
-      <% else %>
-        <li><%= link_to ' Login ', new_user_session_path, class: 'glyphicon glyphicon-log-in' %></li>
-        <li><%= link_to ' SignUp ', new_user_registration_path, class: 'glyphicon glyphicon-user' %></li>
-      <% end %>
-    </ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Show Booking', root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Add your item', new_item_path %></li>
+          <li><%= link_to 'All your item', items_my_path %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "btn" do %>
+            <span class="glyphicon glyphicon-user"></span> Sign out
+          <% end %>
+        <% else %>
+          <%= link_to new_user_registration_path, class: "btn", style: "margin-top: 7px;" do %>
+            <span class="glyphicon glyphicon-user"></span> Sign Up
+          <% end %>
+          <%= link_to new_user_session_path, class: "btn", style: "margin-top: 7px;" do %>
+            <span class="glyphicon glyphicon-log-in"></span> Login
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
-<body>
-<%= yield %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="well"><strong>Admin Pnel</strong></div>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <!-- 1 Panel start Here -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                Book <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+            <div class="panel-body">
+              <li><%= link_to 'Add book', new_user_registration_path %></li>
+              <!--              add path-->
+              <li><%= link_to 'Add author', class: "btn" %></li>
+              <!-- List Group End Here -->
+            </div>
+          </div>
+        </div> <!-- 1 Panel End Here -->
+        <!-- 1 Panel start Here -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Users <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px;">
+            <div class="panel-body">
+              <li><%= link_to 'Add link', new_user_registration_path %></li>
+              <!--              add path-->
+              <li><%= link_to 'Add link', class: "btn" %></li>
+              <!-- List Group End Here -->
+              <!-- List Group End Here -->
+            </div>
+          </div>
+        </div>  <!-- second Panel End Here -->
+        <!-- third  Panel start Here -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                Year Of Manufacture <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="true">
+            <div class="panel-body">
+              <li><%= link_to 'Add link', new_user_registration_path %></li>
+              <!--              add path-->
+              <li><%= link_to 'Add link', class: "btn" %></li>
+              <!-- List Group End Here -->
+              <!-- List Group End Here -->
+            </div>
+          </div>
+        </div>  <!-- third Panel End Here -->
+      </div>
+    </div><!-- /.sidebar column end here -->
+  </div>
+</div>
+<!--<div class="col-md-9">
+  <%#= yield %>
+</div>-->
+<div class="col-md-9">
+  <%= yield %>
+</div>
+
 </body>
 </html>
