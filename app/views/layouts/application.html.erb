@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<nav class='navbar navbar-inverse'>
+<nav class='navbar navbar-inverse' >
   <div class='container-fluid'>
     <div class='navbar-header'>
       <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
@@ -27,7 +27,7 @@
     <div class='collapse navbar-collapse' id='myNavbar'>
       <ul class='nav navbar-nav'>
         <li><%= link_to 'Show Booking', root_path %></li>
-<!--        ADD PATH-->
+        <!--        ADD PATH-->
       </ul>
       <ul class='nav navbar-nav navbar-right'>
         <% if user_signed_in? %>
@@ -50,7 +50,7 @@
   <div class='container'>
     <div class='row'>
       <div class='col-md-3'>
-        <div class='well'><strong>Admin Pnel</strong></div>
+        <div class='well'><strong>Admin Panel</strong></div>
         <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>
           <!-- 1 Panel start Here -->
           <div class='panel panel-default'>
@@ -63,43 +63,39 @@
             </div>
             <div id='collapseOne' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingOne' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Add book' %></li>
-                <!--              add path-->
-                <li><%= link_to 'Add author', new_author_path %></li>
-                <li><%= link_to 'Show all authors', authors_path %></li>
+                <li><%= link_to 'Add book', new_book_path %></li>
+                <li><%= link_to 'Show all books', books_path %></li>
                 <!-- List Group End Here -->
               </div>
             </div>
           </div> <!-- 1 Panel End Here -->
-          <!-- 1 Panel start Here -->
+          <!-- 2 Panel start Here -->
           <div class='panel panel-default'>
             <div class='panel-heading' role='tab' id='headingTwo'>
               <h4 class='panel-title'>
-                <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo'>
-                  Users <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
+                <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo' class='collapsed'>
+                  Authors <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
                 </a>
               </h4>
             </div>
             <div id='collapseTwo' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingTwo' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Add link' %></li>
-                <!--              add path-->
-                <li><%= link_to 'Add link' %></li>
-                <!-- List Group End Here -->
+                <li><%= link_to 'Add author', new_author_path %></li>
+                <li><%= link_to 'Show all authors', authors_path %></li>
                 <!-- List Group End Here -->
               </div>
             </div>
-          </div>  <!-- second Panel End Here -->
-          <!-- third  Panel start Here -->
+          </div> <!-- 2 Panel End Here -->
+          <!-- 3 Panel start Here -->
           <div class='panel panel-default'>
             <div class='panel-heading' role='tab' id='headingThree'>
               <h4 class='panel-title'>
-                <a class='' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseThree' aria-expanded='true' aria-controls='collapseThree'>
-                  Year Of Manufacture <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
+                <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseThree' aria-expanded='false' aria-controls='collapseThree'>
+                  Users <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
                 </a>
               </h4>
             </div>
-            <div id='collapseThree' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingThree' aria-expanded='true'>
+            <div id='collapseThree' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingThree' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
                 <li><%= link_to 'Add link' %></li>
                 <!--              add path-->
@@ -108,7 +104,26 @@
                 <!-- List Group End Here -->
               </div>
             </div>
-          </div>  <!-- third Panel End Here -->
+          </div>  <!-- 3 Panel End Here -->
+          <!-- 4  Panel start Here -->
+          <div class='panel panel-default'>
+            <div class='panel-heading' role='tab' id='headingFour'>
+              <h4 class='panel-title'>
+                <a class='' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseFour' aria-expanded='true' aria-controls='collapseFour'>
+                  Year Of Manufacture <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
+                </a>
+              </h4>
+            </div>
+            <div id='collapseFour' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingFour' aria-expanded='true'>
+              <div class='panel-body'>
+                <li><%= link_to 'Add link' %></li>
+                <!--              add path-->
+                <li><%= link_to 'Add link' %></li>
+                <!-- List Group End Here -->
+                <!-- List Group End Here -->
+              </div>
+            </div>
+          </div>  <!-- 4 Panel End Here -->
         </div>
       </div><!-- /.sidebar column end here -->
       <div class='col-md-9'>

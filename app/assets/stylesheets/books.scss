@@ -1,0 +1,31 @@
+.card ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+.card ul li {
+  border: 1px solid #ddd; /* Add a thin border to each list item */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Add a grey background color */
+  padding: 12px; /* Add some padding */
+}
+
+
+.responsive {
+  width: 100%;
+  max-width: 400px;
+}
+
+
+
+ img {
+   border: 1px solid #ddd; /* Gray border */
+   border-radius: 4px;  /* Rounded border */
+   padding: 5px; /* Some padding */
+ }
+
+/* Add a hover effect (blue shadow) */
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}

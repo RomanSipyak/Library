@@ -11,5 +11,5 @@ class Book < ApplicationRecord
   validates :description, presence: true
   validates :year, numericality: { only_integer: true,
                                    greater_than: 1000,
-                                   less_than: Time.current.year }
+                                   less_than: Time.current.year+1 }
 end
