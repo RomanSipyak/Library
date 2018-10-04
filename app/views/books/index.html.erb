@@ -1,6 +1,6 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 <div class='row'>
-  <div class='col-md-10 col-md-offset-1'>
+  <div class='col-md-12'>
     <div class='panel panel-default panel-table'>
       <div class='panel-heading'>
         <div class='row'>
@@ -20,6 +20,7 @@
           <tr>
             <th><em class='fa fa-cog'></em></th>
             <th class='hidden-xs'>ID</th>
+            <th class='hidden-xs'>Copies</th>
             <th>Title</th>
             <th>Year of release</th>
             <th>Catecory</th>
@@ -31,14 +32,17 @@
           <% @books.each do |book| %>
             <tr>
               <td align='center'>
-                <%= link_to new_book_path(book_id: book.id), class: ' btn btn-default fa fa-pencil' do %>
-
+                <%= link_to new_book_path(book_id: book.id), class: ' btn btn-warning fa fa-pencil' do %>
                 <% end %>
                 <%= link_to book_path(book), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-trash' do %>
-
+                <% end %>
+                <%= link_to add_unit_book_path(book), method: :post, class: 'btn btn-success fa fa-plus' do %>
+                <% end %>
+                <%= link_to delete_unit_book_path(book), method: :post, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-minus-circle' do %>
                 <% end %>
               </td>
-              <td class='hidden-xs'><%= book.id %></td>
+              <td><%= link_to book.id, book_path(book.id) %></td>
+              <td><%= link_to book.units_count, book_path(book.id) %></td>
               <td><%= link_to book.title, book_path(book.id) %></td>
               <td><%= link_to book.year, book_path(book.id) %></td>
               <td><%= link_to book.category.title, book_path(book.id) %></td>
