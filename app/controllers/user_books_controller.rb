@@ -20,7 +20,7 @@ class UserBooksController < ApplicationController
   end
 
   def create
-    end
+  end
 
   def show
   end

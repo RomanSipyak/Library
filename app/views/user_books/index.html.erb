@@ -19,16 +19,26 @@
             <% unless current_user %>
               <p>If you want do order you should to autorize</p>
             <% else %>
-              <% if @free_books[book] > 0 && current_user.bookings.by_status(:taken).count < 4 %>
-                <%= form_with url: user_bookings_path do |form| %>
-                  <%= hidden_field_tag(:book_id, book.id) %>
-                  <%= form.submit 'Do order', class: 'btn btn-success fa fa-check fa-1' %>
+              <% if @free_books[book] > 0 %>
+                <% if current_user.bookings.by_status(:taken).count < 4 %>
+                  <% if current_user.bookings.by_status(:owed).count == 0 %>
+                    <%= form_with url: user_bookings_path do |form| %>
+                      <%= hidden_field_tag(:book_id, book.id) %>
+                      <%= form.submit 'Do order', class: 'btn btn-success fa fa-check fa-1' %>
+                    <% end %>
+
+                  <% else %>
+                    <p>You are debtor</p>
+                  <% end %>
+                <% else %>
+                  <p>You have too much bookings</p>
                 <% end %>
               <% else %>
-                <p>You have a full limit or not have free books</p>
+                <p>Not have free books</p>
               <% end %>
             <% end %>
           </div>
+          <%= @msg %>
         </div>
       </div>
     <% end %>
