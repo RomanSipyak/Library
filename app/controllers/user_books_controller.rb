@@ -1,6 +1,10 @@
 class UserBooksController < ApplicationController
   def index
     @books = Book.all
+    @free_books = {}
+    @books.each do |book|
+      @free_books[book] = Unit.unit_available(true, book.id).count
+    end
   end
 
   def edit
@@ -16,8 +20,9 @@ class UserBooksController < ApplicationController
   end
 
   def create
-  end
+    end
 
   def show
   end
+
 end

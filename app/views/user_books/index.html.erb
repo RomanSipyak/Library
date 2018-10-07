@@ -1,24 +1,37 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 <div class="container-fluid cards-row">
-    <div class="row">
-      <% @books.each  do |book| %>
-      <div class="col-sm-6 col-md-4">
+  <div class="row">
+    <% @books.each do |book| %>
+      <div class="col-sm-6 col-md-4 article">
         <div class="thumbnail" style="outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;">
           <img src="https://1.bp.blogspot.com/-aFQ-W_KTFWQ/V6BdtpSUy6I/AAAAAAAAAH4/xD_U-BYItSsNvk1UGfROqLBzzU1h32oXQCLcB/s320/4-diwali-greeting-cards-by-ajay-acharya.jpg" alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-          <div class="caption" style="border-radius: 7px;background-color: #28a745;">
-            <h3>Tile Of Book: <%= book.title  %></h3>
+          <div class="caption"
+               <% if @free_books[book] > 0 %> style="border-radius: 7px;background-color: #28a745a6;"
+               <% else %>
+               style="border-radius: 7px;background-color: #da7916b8;"
+               <% end %>
+               >
+            <h3>Tile Of Book: <%= book.title %></h3>
             <p class="card-description">
               <strong>Author:  <%= book.author.name %></strong><br>
-              <strong>Count of Free:</strong> 2\<%= book.units_count  %></p>
-              <%= link_to   bookings_path,  class: 'btn btn-success fa fa-check fa-1' do %>
-                Do order
+              <strong>Language:  <%= book.language.language %></strong><br>
+              <strong>Count of Free:</strong> <%= @free_books[book] %>\<%= book.units_count %></p>
+            <% unless current_user %>
+              <p>If you want do order you should to autorize</p>
+            <% else %>
+              <% if @free_books[book] > 0 && current_user.bookings.by_status(:taken).count < 4 %>
+                <%= form_with url: user_bookings_path do |form| %>
+                  <%= hidden_field_tag(:book_id, book.id) %>
+                  <%= form.submit 'Do order', class: 'btn btn-success fa fa-check fa-1' %>
+                <% end %>
+              <% else %>
+                <p>You have a full limit or not have free books</p>
               <% end %>
-
-
+            <% end %>
           </div>
         </div>
       </div>
-       <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>
 

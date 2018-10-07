@@ -1,2 +1,54 @@
-<h1>Bookigs#index</h1>
-<p>Find me in app/views/bookigs/index.html.erb</p>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='panel panel-default panel-table'>
+      <div class='panel-heading'>
+        <div class='row'>
+          <div class='col col-xs-6 text-right col-xs-offset-6'>
+            <%= link_to 'Update Booking Statuses', update_bookings_statuses_path, method: :post, class: 'btn btn-sm btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <div class='panel-body'>
+        <table class='table table-striped table-bordered table-list'>
+          <thead>
+          <tr>
+            <h1><%= @status %></h1>
+          </tr>
+          <tr>
+            <th><em class='fa fa-cog'></em></th>
+            <th class='hidden-xs'>ID</th>
+            <th class='hidden-xs'>Copy ID</th>
+            <th>Start Booking</th>
+            <th>End Booking</th>
+            <th>Status</th>
+            <th>User Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @bookings.each do |booking| %>
+            <tr>
+              <td align='center'>
+                <%= link_to new_booking_path(booking_id: booking.id), class: ' btn btn-warning fa fa-pencil' do %>
+                <% end %>
+                <%= link_to booking_path(booking), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-trash ' do %>
+                <% end %>
+                <%= link_to update_bookings_status_on_taken_path(booking_id: booking.id), method: :past, class: ' btn btn-info fa fa-spinner ' do %>
+                <% end %>
+                <%= link_to update_bookings_status_on_returned_path(booking_id: booking.id), method: :post, class: ' btn btn-success fa fa-check-square ' do %>
+                <% end %>
+              </td>
+              <td><%= link_to booking.id, new_booking_path(booking_id: booking.id) %></td>
+              <td><%= link_to booking.unit_id, book_path(booking.unit.book.id) %></td>
+              <td><%= booking.start_booking %></td>
+              <td><%= link_to booking.end_booking, new_booking_path(booking_id: booking.id) %></td>
+              <td><%= link_to booking.status, new_booking_path(booking_id: booking.id) %></td>
+              <td><%= booking.user.username %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
