@@ -11,18 +11,17 @@ class BookingsController < ApplicationController
   end
 
   def update
+
   end
 
   def update_bookings_statuses
 
   end
 
-  def update_bookings_status_on_returned
-
-  end
-
-  def update_bookings_status_on_taken
-
+  def update_booking_status
+    @booking = Booking.find(params[:booking_id])
+    @booking.update(status: params[:status])
+    redirect_to bookings_path
   end
 
   def edit
