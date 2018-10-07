@@ -11,7 +11,10 @@ class BookingsController < ApplicationController
   end
 
   def update
-
+    @booking = Booking.find(params[:id])
+    @booking.update(status: booking_params[:status])
+    @booking.update(end_booking: (@booking.end_booking + params[:continue_booking].to_i.days))
+    redirect_to bookings_path
   end
 
   def update_bookings_statuses
@@ -37,5 +40,8 @@ class BookingsController < ApplicationController
                else
                  Booking.new
                end
+  end
+  def booking_params
+    params.require(:booking).permit(:status)
   end
 end
