@@ -3,9 +3,6 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
   end
 
-  def create
-
-  end
 
   def destroy
     @booking = Booking.find_by(id: params[:id])

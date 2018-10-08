@@ -8,7 +8,10 @@ class UserBooksController < ApplicationController
   end
 
   def show_taken_books
-    @books = current_user.bookings.by_status(:taken).map {|booking| booking.unit.book}
+    @books_booking = {}
+    bookings = current_user.bookings.by_status(:taken)
+    @books = bookings.map {|booking| booking.unit.book}
+    bookings.each {|booking| @books_booking[booking.unit.book] = booking}
   end
 
 
