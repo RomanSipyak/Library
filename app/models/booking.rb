@@ -9,11 +9,11 @@ class Booking < ApplicationRecord
   validates :code, presence: true, uniqueness: true
 
   def start_lt_end
-    errors.add(start_booking, 'bed: start > end') if start_booking > end_booking
+    errors.add(:start_booking, 'bed: start > end') if start_booking > end_booking
   end
 
   def start_gt_current_time
-    errors.add(start_booking, 'bed: start < current time') if start_booking < DateTime.current
+    errors.add(:start_booking, 'bed: start < current time') if start_booking < DateTime.current
   end
 
   scope :by_status, ->(status) { where(arel_table[:status].eq(status)) }

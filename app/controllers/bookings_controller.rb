@@ -18,7 +18,17 @@ class BookingsController < ApplicationController
   end
 
   def update_bookings_statuses
-
+    Booking.by_status(:taken).each do |booking|
+      if booking.end_booking < DateTime.current
+        booking.update_columns(status: :owed)
+      end
+    end
+    Booking.by_status(:expectation).each do |booking|
+      if booking.start_booking < DateTime.current
+        booking.destroy
+      end
+    end
+    redirect_to bookings_path
   end
 
   def update_booking_status
@@ -41,6 +51,7 @@ class BookingsController < ApplicationController
                  Booking.new
                end
   end
+
   def booking_params
     params.require(:booking).permit(:status)
   end
