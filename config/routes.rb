@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   post '/books/:book_id/copies/delete_last', to: 'copies#delete_last_unit_for_book', as: 'delete_unit_book'
   post '/bookings/update_bookings_statuses', to: 'bookings#update_bookings_statuses', as: 'update_bookings_statuses'
   post '/bookings/update_booking_status', to: 'bookings#update_booking_status', as: 'update_booking_status'
+  get '/user/bookings/show_taken_books', to: 'user_books#show_taken_books', as: 'show_taken_books'
   root to: 'home#index'
 end

@@ -7,7 +7,14 @@ class BookingsController < ApplicationController
 
   end
 
-  def delete
+  def destroy
+    @booking = Booking.find_by(id: params[:id])
+    if @booking
+      @booking.destroy
+      redirect_to bookings_path
+    else
+      redirect_to bookings_path
+    end
   end
 
   def update

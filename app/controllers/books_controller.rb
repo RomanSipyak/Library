@@ -38,7 +38,6 @@ class BooksController < ApplicationController
       redirect_to books_path
     else
       redirect_to books_path
-      return
     end
   end
 
