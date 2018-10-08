@@ -29,6 +29,8 @@ class UserBooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @free_books = {}
+    @free_books[@book] = Unit.unit_available(true, @book.id).count
   end
 
 end

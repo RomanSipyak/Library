@@ -40,6 +40,12 @@ class BookingsController < ApplicationController
 
   def update_booking_status
     @booking = Booking.find(params[:booking_id])
+    if (params[:status] == "taken")
+      @booking.unit.update(available: false)
+    end
+    if (params[:status] == "returned")
+      @booking.unit.update(available: true)
+    end
     @booking.update(status: params[:status])
     redirect_to bookings_path
   end

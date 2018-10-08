@@ -16,8 +16,8 @@
           <li>Category:<%= @book.category.title %></li>
           <li>Language:<%= @book.language.language %></li>
           <li>Count of copies:<%= @book.units_count %></li>
-          <li>Count of free:</li>
-          <li>Count of ordes:</li>
+          <li>Count of free:<%= @free_books[@book] %></li>
+          <li>Count of ordes:<%= @book.units_count - @free_books[@book] %></li>
         </ul>
       </div>
     </div>
