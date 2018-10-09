@@ -19,20 +19,23 @@ class Booking < ApplicationRecord
   scope :by_status, ->(status) {where(arel_table[:status].eq(status))}
 
   def self.booking_by_status_book_id(status, id)
-
-
     units = Unit.arel_table
     booking_table = Booking.arel_table
 =begin
     query = ((booking_table.join(units).on(units[:id].eq(booking_table[:unit_id])).and(booking_table[:status].eq(status)).and (units[:book_id].eq(id)))).to_sql
     Booking.where(query)
 =end
-
 =begin
     self.where(booking_table[:status].eq(status))
     self.where(units[:book_id].eq(id))
 =end
-    joins(:unit).where(units: { book_id: id }).where(booking_table[:status].eq(status))
+    joins(:unit).where(units: {book_id: id}).where(booking_table[:status].eq(status))
 
+  end
+
+  def self.booking_by_status_user_id(status, id)
+    booking_table = Booking.arel_table
+    where(booking_table[:status].eq(status)
+              .and(booking_table[:user_id].eq(id)))
   end
 end
