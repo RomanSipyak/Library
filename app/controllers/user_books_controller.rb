@@ -34,6 +34,14 @@ class UserBooksController < ApplicationController
     @book = Book.find(params[:id])
     @free_books = {}
     @free_books[@book] = Unit.unit_available(true, @book.id).count
+
+    if Unit.unit_available(false, @book.id).count == @book.units_count
+=begin
+      order_books = Unit.unit_available(false, @book.id).order(end_booking: :desc)
+=end
+      order_bookings = Booking.booking_by_status_book_id(:taken, @book.id).order(end_booking: :desc)
+      @day_whan_this_book_by_able = ((order_bookings.first.end_booking - DateTime.current) / 86400).to_i
+    end
   end
 
 end
