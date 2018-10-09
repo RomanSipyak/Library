@@ -43,6 +43,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @units = @book.units
   end
 
   def book_params

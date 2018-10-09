@@ -1,5 +1,8 @@
 class UserBookingsController < ApplicationController
   def index
+    @bookings = current_user.bookings
+    @books_booking = {}
+    @bookings.each {|booking| (@books_booking[booking] = booking.unit.book) if booking.unit }
   end
 
   def create
@@ -16,18 +19,4 @@ class UserBookingsController < ApplicationController
     redirect_to user_books_path
   end
 
-  def delete
-  end
-
-  def update
-  end
-
-  def edit
-  end
-
-  def show
-  end
-
-  def new
-  end
 end

@@ -18,22 +18,6 @@ class UserBooksController < ApplicationController
     @books = current_user.bookings.booking_by_status_user_id(:returned, current_user.id).map {|booking| booking.unit.book}
   end
 
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
-  def new
-  end
-
-  def create
-  end
-
   def show
     @book = Book.find(params[:id])
     @free_books = {}

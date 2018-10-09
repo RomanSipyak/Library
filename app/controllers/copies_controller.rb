@@ -1,18 +1,10 @@
 class CopiesController < ApplicationController
-  def edit
-  end
 
-  def update
-  end
-
-  def show
-  end
-
-  def index
-  end
-
-  def create
-
+  def destroy
+    @unit = Unit.find_by(id: params[:id])
+    @unit.destroy
+    @book = Book.find(params[:book_id])
+    redirect_to book_path(@book)
   end
 
   def create_unit_for_book
