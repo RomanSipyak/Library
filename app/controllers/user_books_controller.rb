@@ -7,17 +7,6 @@ class UserBooksController < ApplicationController
     end
   end
 
-  def show_taken_books
-    @books_booking = {}
-    bookings = current_user.bookings.by_status(:taken)
-    @books = bookings.map {|booking| booking.unit.book}
-    bookings.each {|booking| @books_booking[booking.unit.book] = booking}
-  end
-
-  def show_readed_books
-    @books = current_user.bookings.booking_by_status_user_id(:returned, current_user.id).map {|booking| booking.unit.book}
-  end
-
   def show
     @book = Book.find(params[:id])
     @free_books = {}
@@ -31,5 +20,17 @@ class UserBooksController < ApplicationController
       @day_whan_this_book_by_able = ((order_bookings.first.end_booking - DateTime.current) / 86400).to_i
     end
   end
+
+  def show_taken_books
+    @books_booking = {}
+    bookings = current_user.bookings.by_status(:taken)
+    @books = bookings.map {|booking| booking.unit.book}
+    bookings.each {|booking| @books_booking[booking.unit.book] = booking}
+  end
+
+  def show_readed_books
+    @books = current_user.bookings.booking_by_status_user_id(:returned, current_user.id).map {|booking| booking.unit.book}
+  end
+
 
 end

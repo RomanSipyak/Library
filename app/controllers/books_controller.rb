@@ -1,4 +1,13 @@
 class BooksController < ApplicationController
+  def index
+    @books = Book.all
+  end
+
+  def show
+    @book = Book.find(params[:id])
+    @units = @book.units
+  end
+
   def new
     @book = if !params[:book_id].nil?
               Book.find(params[:book_id])
@@ -18,9 +27,6 @@ class BooksController < ApplicationController
     end
   end
 
-  def index
-    @books = Book.all
-  end
 
   def update
     @book = Book.find(params[:id])
@@ -41,10 +47,6 @@ class BooksController < ApplicationController
     end
   end
 
-  def show
-    @book = Book.find(params[:id])
-    @units = @book.units
-  end
 
   def book_params
     params.require(:book).permit(:id, :title, :year,

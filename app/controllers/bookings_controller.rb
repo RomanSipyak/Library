@@ -3,6 +3,20 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
   end
 
+  def new
+    @booking = if !params[:booking_id].nil?
+                 Booking.find(params[:booking_id])
+               else
+                 Booking.new
+               end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(status: booking_params[:status])
+    @booking.update(end_booking: (@booking.end_booking + params[:continue_booking].to_i.days))
+    redirect_to bookings_path
+  end
 
   def destroy
     @booking = Booking.find_by(id: params[:id])
@@ -13,14 +27,6 @@ class BookingsController < ApplicationController
       redirect_to bookings_path
     end
   end
-
-  def update
-    @booking = Booking.find(params[:id])
-    @booking.update(status: booking_params[:status])
-    @booking.update(end_booking: (@booking.end_booking + params[:continue_booking].to_i.days))
-    redirect_to bookings_path
-  end
-
   def update_bookings_statuses
     Booking.by_status(:taken).each do |booking|
       if booking.end_booking < DateTime.current
@@ -47,20 +53,6 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
-  def edit
-
-  end
-
-  def show
-  end
-
-  def new
-    @booking = if !params[:booking_id].nil?
-                 Booking.find(params[:booking_id])
-               else
-                 Booking.new
-               end
-  end
 
   def booking_params
     params.require(:booking).permit(:status)

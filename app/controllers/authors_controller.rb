@@ -1,4 +1,13 @@
 class AuthorsController < ApplicationController
+
+  def index
+    @authors = Author.all
+  end
+
+  def show
+    @author = Author.find(params[:id])
+  end
+
   def new
     @author = if !params[:author_id].nil?
                 Author.find(params[:author_id])
@@ -7,30 +16,21 @@ class AuthorsController < ApplicationController
               end
   end
 
-  def index
-    @authors = Author.all
-  end
-
-
-  def update
-    @author = Author.find(params[:id])
-    if @author.update(author_params)
-      redirect_to authors_path
-    else
-      render :new
-    end
-  end
-
-  def show
-    @author = Author.find(params[:id])
-  end
-
   def create
     @author = Author.new(author_params)
     if @author.save
       @status = 'Author Create'
       @author = Author.new
       render :new
+    else
+      render :new
+    end
+  end
+
+  def update
+    @author = Author.find(params[:id])
+    if @author.update(author_params)
+      redirect_to authors_path
     else
       render :new
     end

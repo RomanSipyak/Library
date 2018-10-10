@@ -27,8 +27,4 @@ class CopiesController < ApplicationController
       redirect_to books_path
     end
   end
-
-  def new
-  end
-
 end
