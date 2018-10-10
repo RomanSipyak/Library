@@ -23,6 +23,8 @@
             <th>End Booking</th>
             <th>Status</th>
             <th>User Name</th>
+            <th>Book Name</th>
+            <th>Author book</th>
           </tr>
           </thead>
           <tbody>
@@ -58,6 +60,8 @@
               <td><%= link_to booking.end_booking, new_booking_path(booking_id: booking.id) %></td>
               <td><%= link_to booking.status, new_booking_path(booking_id: booking.id) %></td>
               <td><%= booking.user.username %></td>
+              <td><%= booking.book_title %></td>
+              <td><%= booking.author_name %></td>
             </tr>
           <% end %>
           </tbody>

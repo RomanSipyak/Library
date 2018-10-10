@@ -21,6 +21,8 @@
             <th>End Booking</th>
             <th>Status</th>
             <th>User Name</th>
+            <th>Book Name</th>
+            <th>Author book</th>
           </tr>
           </thead>
           <tbody>
@@ -32,15 +34,17 @@
                 <td><%= link_to booking.start_booking, user_book_path(@books_booking[booking]) %></td>
                 <td><%= link_to booking.end_booking, user_book_path(@books_booking[booking]) %></td>
                 <td><%= link_to booking.status, user_book_path(@books_booking[booking]) %></td>
-                <td><%= booking.user.username %></td>
+
               <% else %>
                 <td><%= booking.id %></td>
                 <td><%= booking.unit_id %></td>
                 <td><%= booking.start_booking %></td>
                 <td><%= booking.end_booking %></td>
                 <td><%= booking.status %></td>
-                <td><%= booking.user.username %></td>
               <% end %>
+              <td><%= booking.user.username %></td>
+              <td><%= booking.book_title %></td>
+              <td><%= booking.author_name %></td>
             </tr>
           <% end %>
           </tbody>

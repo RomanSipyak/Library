@@ -12,6 +12,8 @@ class UserBookingsController < ApplicationController
       booking[:start_booking] = DateTime.current + 4.days
       booking[:end_booking] = DateTime.current + 24.days
       booking.unit = free_units.first
+      booking.book_title = unit.book.title
+      booking.author_name = unit.book.author.name
       booking.user = current_user
       booking[:code] = SecureRandom.hex(7)
       booking.save

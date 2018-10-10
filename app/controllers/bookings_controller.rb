@@ -31,7 +31,6 @@ class BookingsController < ApplicationController
     Booking.by_status(:taken).each do |booking|
       if booking.end_booking < DateTime.current
         booking.update_columns(status: :owed)
-        p "xcxS"
         booking.user.update(debtor: true)
       end
     end
