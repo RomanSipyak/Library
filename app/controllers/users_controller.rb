@@ -9,9 +9,14 @@ class UsersController < ApplicationController
                               'No'
                             end
     end
+
     def show
+      p 'reeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
       @user = User.find(params[:id])
-      @debtor = (@user.bookings.by_status(:owed).count > 0) ? 'Yes' : 'No'
+      @bookings = @user.bookings
+      @bookings = current_user.bookings
+      @books_booking = {}
+      @bookings.each { |booking| (@books_booking[booking] = booking.unit.book) if booking.unit }
     end
   end
 end
