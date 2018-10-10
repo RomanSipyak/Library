@@ -37,10 +37,10 @@
               <td><%= link_to user.username, user_path(user.id) %></td>
               <td><%= link_to user.email, user_path(user.id) %></td>
               <td><%= link_to user_path(user.id) do %>
-                  <% user.admin ? "Yes" : "No" %>
+                  <%= user.admin ? "Yes" : "No" %>
                 <% end %>
               </td>
-              <td><%= @users_debtor[user] %></td>
+              <td>  <%= user.debtor ? "Yes" : "No" %> </td>
             </tr>
           <% end %>
           </tbody>

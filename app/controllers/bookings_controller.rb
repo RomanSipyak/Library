@@ -31,6 +31,8 @@ class BookingsController < ApplicationController
     Booking.by_status(:taken).each do |booking|
       if booking.end_booking < DateTime.current
         booking.update_columns(status: :owed)
+        p "xcxS"
+        booking.user.update(debtor: true)
       end
     end
     Booking.by_status(:expectation).each do |booking|
@@ -45,11 +47,13 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     if (params[:status] == "taken")
       @booking.unit.update(available: false)
+      @booking.user.update(debtor: false) if @booking.user.debtor
     end
     if (params[:status] == "returned")
       @booking.unit.update(available: true)
+      @booking.user.update(debtor: false) if @booking.user.debtor
     end
-    @booking.update(status: params[:status])
+    @booking.update_column(:status, params[:status])
     redirect_to bookings_path
   end
 

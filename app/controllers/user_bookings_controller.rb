@@ -16,7 +16,7 @@ class UserBookingsController < ApplicationController
       booking[:code] = SecureRandom.hex(7)
       booking.save
     end
-    redirect_to user_books_path
+    redirect_to user_bookings_path
   end
 
 end
