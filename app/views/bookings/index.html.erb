@@ -4,12 +4,36 @@
     <div class='panel panel-default panel-table'>
       <div class='panel-heading'>
         <div class='row'>
-          <div class='col col-xs-6 text-right col-xs-offset-6'>
+          <div class='col col-xs-6  '>
+            <div class="row">
+              <%= form_tag bookings_path, method: :get do %>
+                <%#= form_with url: bookings_path, method: :get do |form| %>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= text_field_tag 'by_book_title_or_author_name_or_code', params[:by_book_title_or_author_name_or_code],
+                                       placeholder: 'code\name_title\name_author',
+                                       class: 'form-control col-md-6',
+                                       style: 'width: 220px' %>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 5px">
+                  <div class="col-md-3">
+                    <%= select_tag :by_status, options_for_select(Booking.statuses.map {|k, v| [k.humanize.capitalize, v]}) %>
+                  </div>
+                  <div class="col-md-9">
+                    <div><%= submit_tag 'Search', class: 'btn btn-ms btn-success ', style: "margin-left: 5px;" %></div>
+                  </div>
+                </div>
+                <%#= form.submit 'Search', class: 'btn btn-ms btn-success ', style: "margin-left: 5px;" %>
+              <% end %>
+            </div>
+          </div>
+          <div class='col col-xs-3 offset-xs-6 '>
             <%= link_to 'Update Booking Statuses', update_bookings_statuses_path, method: :post, class: 'btn btn-sm btn-primary' %>
           </div>
         </div>
       </div>
-      <div class='panel-body'>
+      <div class='panel-body table-responsive'>
         <table class='table table-striped table-bordered table-list'>
           <thead>
           <tr>
@@ -22,6 +46,7 @@
             <th>Start Booking</th>
             <th>End Booking</th>
             <th>Status</th>
+            <th>Code</th>
             <th>User Name</th>
             <th>Book Name</th>
             <th>Author book</th>
@@ -54,11 +79,12 @@
               <% if booking.unit %>
                 <td><%= link_to booking.unit_id, book_path(booking.unit.book.id) %></td>
               <% else %>
-                <td> Copy not exist </td>
+                <td> Copy not exist</td>
               <% end %>
               <td><%= booking.start_booking %></td>
               <td><%= link_to booking.end_booking, new_booking_path(booking_id: booking.id) %></td>
               <td><%= link_to booking.status, new_booking_path(booking_id: booking.id) %></td>
+              <td><%= link_to booking.code, new_booking_path(booking_id: booking.id) %></td>
               <td><%= booking.user.username %></td>
               <td><%= booking.book_title %></td>
               <td><%= booking.author_name %></td>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :authors, only: [:index, :show, :new, :create, :update, :destroy]
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :update]
   get '/user/bookings/show/taken/books', to: 'user_books#show_taken_books', as: 'show_taken_books'
   get '/user/bookings/show/readed/books', to: 'user_books#show_readed_books', as: 'readed_books'
   resources :bookings, only: [:index, :new, :update, :destroy]

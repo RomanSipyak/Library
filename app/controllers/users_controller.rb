@@ -11,12 +11,18 @@ class UsersController < ApplicationController
     end
 
     def show
-      p 'reeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
       @user = User.find(params[:id])
       @bookings = @user.bookings
       @bookings = current_user.bookings
       @books_booking = {}
-      @bookings.each { |booking| (@books_booking[booking] = booking.unit.book) if booking.unit }
+      @bookings.each {|booking| (@books_booking[booking] = booking.unit.book) if booking.unit}
     end
+
+    def update
+      @user = User.find(params[:user_id])
+      @user.update(admin: params[:admin])
+      redirect_to user_path(@user)
+    end
+
   end
 end

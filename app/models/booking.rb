@@ -1,12 +1,13 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :unit
-  enum status: { expectation: 0, taken: 1, returned: 2,
-                 owed: 3 }
+  enum status: {expectation: 0, taken: 1, returned: 2,
+                owed: 3}
 
   validates :start_booking, :end_booking, presence: true
   validate :start_gt_current_time, :start_lt_end
   validates :code, presence: true, uniqueness: true
+  include Filterable
 
   def start_lt_end
     errors.add(:start_booking, 'bed: start > end') if start_booking > end_booking
@@ -16,10 +17,11 @@ class Booking < ApplicationRecord
     errors.add(:start_booking, 'bed: start < current time') if start_booking < DateTime.current
   end
 
-  scope :by_status, ->(status) { where(arel_table[:status].eq(status)) }
-  scope :by_book_title_or_author_name, ->(by_book_title_or_author_name) {
-    where(arel_table[:book_title].matches("%#{by_book_title_or_author_name}%"))
-      .or(arel_table[:author_name].matches("%#{by_book_title_or_author_name}%"))
+  scope :by_status, ->(status) {where(arel_table[:status].eq(status))}
+  scope :by_book_title_or_author_name_or_code, ->(by_book_title_or_author_name_or_code) {
+    where((arel_table[:book_title].matches("%#{by_book_title_or_author_name_or_code}%"))
+        .or(arel_table[:author_name].matches("%#{by_book_title_or_author_name_or_code}%"))
+        .or(arel_table[:code].matches("%#{by_book_title_or_author_name_or_code}%")))
   }
   scope :by_title_or_name_fo_author, ->(by_title_or_name_fo_author) do
     author = Author.arel_table
@@ -34,7 +36,7 @@ class Booking < ApplicationRecord
     #     Booking.where(query)
     #     self.where(booking_table[:status].eq(status))
     #     self.where(units[:book_id].eq(id))
-    joins(:unit).where(units: { book_id: id }).where(booking_table[:status].eq(status))
+    joins(:unit).where(units: {book_id: id}).where(booking_table[:status].eq(status))
   end
 
   def self.booking_by_username(booking_by_username)

@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @bookings = Booking.filter(params.slice(:by_status, :by_book_title_or_author_name_or_code))
   end
 
   def new
@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
       redirect_to bookings_path
     end
   end
+
   def update_bookings_statuses
     Booking.by_status(:taken).each do |booking|
       if booking.end_booking < DateTime.current
@@ -35,27 +36,24 @@ class BookingsController < ApplicationController
       end
     end
     Booking.by_status(:expectation).each do |booking|
-      if booking.start_booking < DateTime.current
-        booking.destroy
-      end
+      booking.destroy if booking.start_booking < DateTime.current
     end
     redirect_to bookings_path
   end
 
   def update_booking_status
     @booking = Booking.find(params[:booking_id])
-    if (params[:status] == "taken")
+    if params[:status] == 'taken'
       @booking.unit.update(available: false)
       @booking.user.update(debtor: false) if @booking.user.debtor
     end
-    if (params[:status] == "returned")
+    if params[:status] == 'returned'
       @booking.unit.update(available: true)
       @booking.user.update(debtor: false) if @booking.user.debtor
     end
     @booking.update_column(:status, params[:status])
     redirect_to bookings_path
   end
-
 
   def booking_params
     params.require(:booking).permit(:status)

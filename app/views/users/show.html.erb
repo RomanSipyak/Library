@@ -35,9 +35,17 @@
             </table>
             <% if current_user.admin %>
               <% if @user.admin %>
-                <%= link_to 'Change on simple user' %>
+                <%= form_with url: user_path, method: :patch do |form| %>
+                  <%= hidden_field_tag(:user_id, @user.id) %>
+                  <%= hidden_field_tag(:admin, false) %>
+                  <%= form.submit 'Change on simple user', class: ' btn btn-sm btn-info ' %>
+                <% end %>
               <% else %>
-                <%= link_to 'Change on admin user' %>
+                <%= form_with url:  user_path, method: :patch do |form| %>
+                  <%= hidden_field_tag(:user_id, @user.id) %>
+                  <%= hidden_field_tag(:admin, true) %>
+                  <%= form.submit 'Change on admin', class: 'btn btn-xs btn-success ' %>
+                <% end %>
               <% end %>
             <% end %>
           </div>
