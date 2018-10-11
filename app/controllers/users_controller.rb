@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users_debtor = {}
-    @users = User.all
+    @users = User.filter(params.slice(:by_debtor))
     @users.each do |user|
       @users_debtor[user] = if user.bookings.by_status(:owed).count > 0
                               'Yes'

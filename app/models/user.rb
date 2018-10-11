@@ -9,7 +9,9 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
 
+  include Filterable
+  scope :by_debtor, ->(by_debtor) {where(arel_table[:debtor].eq(by_debtor))}
 
 end
