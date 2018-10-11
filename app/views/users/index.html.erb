@@ -8,17 +8,14 @@
             <%= link_to 'Create book', new_book_path, class: 'btn btn-sm btn-primary' %>
           </div>
           <%= form_tag users_path, method: :get do %>
-            <%#= form_with url: bookings_path, method: :get do |form| %>
-
-            <div class="row" style="margin-top: 5px">
-              <div class="col-md-3">
-                <%= select_tag :by_debtor, options_for_select([['Debtor', true], ['Not debtor', false], ['No filtre', nil]],nil)   %>
+            <div class="row" >
+              <div class="col-md-2" style="margin: 7px ">
+                <%= select_tag :by_debtor, options_for_select([['Debtor', true], ['Not debtor', false], ['No filtre', nil]], nil) %>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-3">
                 <div><%= submit_tag 'Search', class: 'btn btn-ms btn-success ', style: "margin-left: 5px;" %></div>
               </div>
             </div>
-            <%#= form.submit 'Search', class: 'btn btn-ms btn-success ', style: "margin-left: 5px;" %>
           <% end %>
         </div>
       </div>
