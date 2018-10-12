@@ -727,4 +727,193 @@
     name: 'Zhuang, Chuang',
     nativeName: 'Saɯ cueŋƅ, Saw cuengh'
   }
-}.each { |k,v| Language.create(language: v[:name])}
+}.each { |_k, v| Language.create(language: v[:name]) }
+
+{
+  category1: {
+    id: 1,
+    title: 'Science fiction'
+  },
+  category2: {
+    id: 2,
+    title: 'Satire'
+  },
+  category3: {
+    id: 3,
+    title: 'Drama'
+  },
+  category4: {
+    id: 4,
+    title: 'Action and Adventure'
+  },
+  category5: {
+    id: 5,
+    title: 'Romance'
+  },
+  category6: {
+    id: 6,
+    title: 'Mystery'
+  },
+  category7: {
+    id: 7,
+    title: 'Horror',
+    books_count: '2'
+  },
+  category8: {
+    id: 8,
+    title: 'Self help'
+  },
+  category9: {
+    id: 9,
+    title: 'Health'
+  },
+  category10: {
+    id: 10,
+    title: 'Guide'
+  },
+  category11: {
+    id: 11,
+    title: 'Travel'
+  },
+  category12: {
+    id: 12,
+    title: 'Childrens'
+  },
+  category13: {
+    id: 13,
+    title: 'Religion, Spirituality & New Age'
+  },
+  category14: {
+    id: 14,
+    title: 'Science'
+  },
+  category15: {
+    id: 15,
+    title: 'History'
+  },
+  category16: {
+    id: 16,
+    title: 'Math'
+  },
+  category17: {
+    id: 17,
+    title: 'Anthology'
+  },
+  category18: {
+    id: 18,
+    title: 'Poetry'
+  },
+  category19: {
+    id: 19,
+    title: 'Encyclopedias'
+  },
+  category20: {
+    id: 20,
+    title: 'Dictionaries'
+  },
+  category21: {
+    id: 21,
+    title: 'Comics'
+  },
+  category22: {
+    id: 22,
+    title: 'Art',
+    books_count: 1
+  },
+  category23: {
+    id: 23,
+    title: 'Cookbooks'
+  },
+  category24: {
+    id: 24,
+    title: 'Diaries'
+  },
+  category25: {
+    id: 25,
+    title: 'Journals'
+  },
+  category26: {
+    id: 26,
+    title: 'Prayer books'
+  },
+  category27: {
+    id: 27,
+    title: 'Series'
+  },
+  category28: {
+    id: 28,
+    title: 'Trilogy'
+  },
+  category29: {
+    id: 29,
+    title: 'Biographies'
+  },
+  category30: {
+    id: 30,
+    title: 'Autobiographies',
+    books_count: 1
+  },
+  category31: {
+    id: 31,
+    title: 'Fantasy',
+    books_count: 1
+  },
+  category32: {
+    id: 32,
+    title: 'Novel',
+    books_count: 6
+  },
+  category33: {
+    id: 33,
+    title: 'Memoir',
+    books_count: 1
+  }
+}.each do |_k, v|
+  a = v[:books_count] || 0
+  Category.create(id: v[:id], title: v[:title], books_count: a)
+end
+
+{
+  author1: {
+    id: 1,
+    name: 'Mari Bolte',
+    biography: 'Mari Bolte is an author of childrens books and a lover of art. She lives in southern Minnesota with her husband, daughter, and two wiener dogs. A degree in creative writing has taught her the value of fine writing. Parenthood has made her a purveyor of fine art, with specializations in sidewalk chalk, washable markers and glitter glue.',
+    books_count: 1
+  },
+  author2: {
+    id: 2,
+    name: 'Stephen King',
+    biography: 'Stephen Edwin King is an American author of horror, supernatural fiction, suspense, science fiction and fantasy. His books have sold more than 350 million copies, many of which have been adapted into feature films, miniseries, television series, and comic books. King has published 58 novels, including seven under the pen name Richard Bachman, and six non-fiction books. He has written around 200 short stories, most of which have been published in book collections.',
+    books_count: 5
+  },
+  author3: {
+    id: 3,
+    name: 'Antoine Saint-Exupéry',
+    biography: 'Antoine Marie Jean-Baptiste Roger, comte de Saint-Exupéry ( 29 June 1900 – 31 July 1944) was a French writer, poet, aristocrat, journalist, and pioneering aviator. He became a laureate of several of Frances highest literary awards and also won the U.S. National Book Award. He is best remembered for his novella The Little Prince (Le Petit Prince) and for his lyrical aviation writings, including Wind, Sand and Stars and Night Flight.',
+    books_count: 2
+  },
+  author4: {
+    id: 4,
+    name: 'François Bégaudeau',
+    biography: 'François Bégaudeau (French pronunciation: ​[fʁɑ̃swa beɡodo]; born 27 April 1971) is a French writer, journalist, and actor. He is best known for co-writing and starring in Entre les murs (2008), a film based on his 2006 novel of the same name. The film won the Palme dOr at the 2008 Cannes Film Festival and received an Academy Award nomination for Best Foreign Language Film in 2009.',
+    books_count: 1
+  },
+  author5: {
+    id: 5,
+    name: 'Patrick Süskind',
+    biography: 'Süskind was born in Ambach by Starnberger See, near Munich in Germany. His father was writer and journalist Wilhelm Emanuel Süskind, who worked for the newspaper Süddeutsche Zeitung and is famous as the co-author of the well-known publication Aus dem Wörterbuch des Unmenschen (From the Dictionary of an Inhuman), a critical collection of essays concerning the language of the Nazi era. Patrick Süskind went to school in Holzhausen, a small Bavarian village. His mother worked as a sports trainer; his older brother Martin E. Süskind is also a journalist. Süskind has many relatives from the aristocracy in Württemberg, making him one of the descendants of the exegete Johann Albrecht Bengel and of the reformer Johannes Brenz.
+        After his qualification testing for university and his mandatory community service, he studied medieval and modern history at the University of Munich and in Aix-en-Provence from 1968-1974, but never graduated. Funded by his parents, he relocated to Paris, where he wrote mainly short, unpublished fiction and longer screenplays which were not made into films.',
+    books_count: 1
+  },
+  author6: {
+    id: 6,
+    name: 'J. K. Rowling',
+    biography: 'Joanne Rowling (born 31 July 1965), writing under the pen names J. K. Rowling and Robert Galbraith, is a British novelist, philanthropist, film producer, television producer and screenwriter, best known for writing the Harry Potter fantasy series. The books have won multiple awards, and sold more than 500 million copies, becoming the best-selling book series in history. They have also been the basis for a film series, over which Rowling had overall approval on the scripts and was a producer on the final films in the series.',
+    books_count: 2
+  }
+}.each do |_k, v|
+  a = v[:books_count] || 0
+  Author.create(id: v[:id], name: v[:name],
+                biography: v[:biography],
+                books_count: a)
+end
