@@ -1,7 +1,7 @@
 <div class='row'>
-  <div class='col-md-12 about ' style='background-color:#e0b575e0; border-radius: 7px; padding: 5px;border: solid; border-width: 3px;'>
+  <div class='col-md-8 col-md-offset-2  about ' style='background-color:#e0b575e0; border-radius: 7px; padding: 5px;border: solid; border-width: 3px;'>
     <div class='row about'>
-      <div class='col-lg-6 col-md-6 col-sm-12 '>
+      <div class='col-lg-6 col-md-6  '>
         <div class="row">
           <div class="col-md-12">
             <img src="https://www.google.com.ua/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwieqvf_ierdAhVLkSwKHUfLBFIQjRx6BAgBEAU&url=https%3A%2F%2Fwww.w3schools.com%2Fw3css%2Fw3css_images.asp&psig=AOvVaw2kmYJjdoZSUX-TdJw1fZyG&ust=1538647564869526" alt="No found image" class="responsive" width="600" height="400">
@@ -19,6 +19,14 @@
           <li>Count of free:<%= @free_books[@book] %></li>
           <li>Count of ordes:<%= @book.units_count - @free_books[@book] %></li>
           <li>Before this book be able days:<%= @day_whan_this_book_by_able %></li>
+          <% if user_signed_in? && current_user.admin %>
+            <li>
+              <%= form_tag new_estimate_path, method: :get do %>
+                <%= hidden_field_tag 'book_id', @book.id %>
+                <%= submit_tag 'Add estimate', class: 'btn btn-sm btn-primary' %>
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -27,3 +35,6 @@
     </div>
   </div>
 </div>
+
+
+
