@@ -27,6 +27,7 @@
     <div class='collapse navbar-collapse' id='myNavbar'>
       <ul class='nav navbar-nav'>
         <li><%= link_to 'Show All books', user_books_path %></li>
+        <li><%= link_to 'Show All authors', user_authors_path %></li>
         <% if user_signed_in?  %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -111,8 +112,7 @@
             <div id='collapseThree' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingThree' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
                 <li><%= link_to 'Show all user', users_path %></li>
-                <!--              add path-->
-                <li><%= link_to 'Add link' %></li>
+
                 <!-- List Group End Here -->
                 <!-- List Group End Here -->
               </div>
@@ -130,8 +130,6 @@
             <div id='collapseFour' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingFour' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
                 <li><%= link_to 'Show all orders', bookings_path %></li>
-                <!--              add path-->
-                <li><%= link_to 'Add link' %></li>
                 <!-- List Group End Here -->
                 <!-- List Group End Here -->
               </div>

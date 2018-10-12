@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'user_authors/index'
+  get 'user_authors/new'
+  get 'user_authors/create'
+  get 'user_authors/update'
+  get 'user_authors/show'
+  get 'user_authors/destroy'
   get 'estimates/index'
   get 'estimates/new'
   get 'estimates/create'
@@ -7,6 +13,7 @@ Rails.application.routes.draw do
   get 'estimates/destroy'
   devise_for :users
   resources :authors, only: [:index, :show, :new, :create, :update, :destroy]
+  resources :user_authors, only: [:index, :show]
   resources :users, only: [:index, :show, :update]
 
   get '/user/bookings/show/taken/books', to: 'user_books#show_taken_books', as: 'show_taken_books'

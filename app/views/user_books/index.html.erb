@@ -111,6 +111,7 @@
             <p class="card-description">
               <strong>Author:  <%= book.author.name %></strong><br>
               <strong>Language:  <%= book.language.language %></strong><br>
+              <strong>Rating:  <%= book.rating %></strong><br>
               <strong>Count of Free:</strong> <%= @free_books[book] %>\<%= book.units_count %></p>
             <% unless current_user %>
               <p>If you want do order you should to autorize</p>

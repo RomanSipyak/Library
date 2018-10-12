@@ -81,7 +81,7 @@
               <div><%= submit_tag 'Save' %></div>
             </div>
 
-        <% end %>
+          <% end %>
 
           <div class='modal-footer'>
             <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
@@ -120,6 +120,7 @@
             <th>Year of release</th>
             <th>Category</th>
             <th>Author</th>
+            <th>Rating:</th>
             <th>Description</th>
           </tr>
           </thead>
@@ -142,6 +143,7 @@
               <td><%= link_to book.year, book_path(book.id) %></td>
               <td><%= link_to book.category.title, book_path(book.id) %></td>
               <td><%= link_to book.author.name, book_path(book.id) %></td>
+              <td><%= book.rating %></td>
               <td><%= book.description[0..30] + '...' %></td>
             </tr>
           <% end %>
