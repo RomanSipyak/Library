@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_101843) do
+ActiveRecord::Schema.define(version: 2018_10_13_144206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_101843) do
     t.bigint "language_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "image_data"
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["language_id"], name: "index_books_on_language_id"
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_101843) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.boolean "debtor", default: false
+    t.text "image_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

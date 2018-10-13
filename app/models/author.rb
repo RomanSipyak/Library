@@ -1,4 +1,5 @@
 class Author < ApplicationRecord
+  include ImageUploader::Attachment.new(:image)
   has_many :books, dependent: :nullify
   validates :name, presence: true, uniqueness: true
   validates :biography, presence: true

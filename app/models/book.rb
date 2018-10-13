@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+  include ImageUploader::Attachment.new(:image)
   belongs_to :author, counter_cache: :books_count
   belongs_to :category, counter_cache: :books_count
   belongs_to :language, counter_cache: :books_count
