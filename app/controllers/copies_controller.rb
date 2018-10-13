@@ -1,5 +1,5 @@
 class CopiesController < ApplicationController
-
+  before_action :authenticate_user!, :user_admin!
   def destroy
     @unit = Unit.find_by(id: params[:id])
     @unit.destroy
@@ -26,5 +26,9 @@ class CopiesController < ApplicationController
     else
       redirect_to books_path
     end
+  end
+
+  def user_admin!
+    redirect_to root_path unless current_user.admin
   end
 end

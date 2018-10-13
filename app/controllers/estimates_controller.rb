@@ -1,6 +1,5 @@
 class EstimatesController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!
 
   def new
     @book = Book.find(params[:book_id])
@@ -33,11 +32,5 @@ class EstimatesController < ApplicationController
     end
     @status = "Your estimate update with rating: #{params[:rating]}"
     render :new
-  end
-
-  def show
-  end
-
-  def destroy
   end
 end

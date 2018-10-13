@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
-
+  before_action :authenticate_user!, :user_admin!
+  skip_before_action :authenticate_user!, on: %i[index]
   def index
     @authors = Author.all
   end
@@ -46,6 +47,10 @@ class AuthorsController < ApplicationController
       return
     end
 
+  end
+
+  def user_admin!
+    redirect_to root_path unless current_user.admin
   end
 
   def author_params
