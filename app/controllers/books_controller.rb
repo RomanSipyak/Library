@@ -6,6 +6,7 @@ class BooksController < ApplicationController
     @authors = Author.all
     @years = Array.new(Time.now.year - 999) { |index| [(index + 1000).to_s, index + 1000] } << ['No filtre', nil]
     @books = Book.filter(params.slice(:by_language_ids, :by_authors_ids, :by_category_ids, :by_year, :by_title_or_name_fo_author))
+                 .page params[:page]
   end
 
   def show

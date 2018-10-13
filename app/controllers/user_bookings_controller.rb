@@ -1,7 +1,7 @@
 class UserBookingsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @bookings = current_user.bookings
+    @bookings = current_user.bookings.page params[:page]
     @books_booking = {}
     @bookings.each {|booking| (@books_booking[booking] = booking.unit.book) if booking.unit}
   end

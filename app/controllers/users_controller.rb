@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, :user_admin!
 
   def index
-    @users = User.filter(params.slice(:by_debtor))
-
+    @users = User.filter(params.slice(:by_debtor)).page params[:page]
   end
 
   def show

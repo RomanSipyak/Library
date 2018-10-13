@@ -8,6 +8,7 @@ class UserBooksController < ApplicationController
     @authors = Author.all
     @years = Array.new(Time.now.year - 999) {|index| [(index + 1000).to_s, index + 1000]} << ['No filtre', nil]
     @books = Book.filter(params.slice(:by_language_ids, :by_authors_ids, :by_category_ids, :by_year, :by_title_or_name_fo_author))
+                 .page params[:page]
     @free_books = {}
     @books.each do |book|
       @free_books[book] = Unit.unit_available(true, book.id).count
@@ -30,7 +31,7 @@ class UserBooksController < ApplicationController
 
   def show_taken_books
     @books_booking = {}
-    bookings = current_user.bookings.by_status(:taken)
+    bookings = current_user.bookings.by_status(:taken).page params[:page]
     @books = bookings.map {|booking| booking.unit.book}
     bookings.each {|booking| @books_booking[booking.unit.book] = booking}
   end

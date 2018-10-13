@@ -2,7 +2,7 @@ class AuthorsController < ApplicationController
   before_action :authenticate_user!, :user_admin!
   skip_before_action :authenticate_user!, on: %i[index]
   def index
-    @authors = Author.all
+    @authors = Author.all.page params[:page]
   end
 
   def show

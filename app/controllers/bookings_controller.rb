@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, on: %i[index]
   def index
     @bookings = Booking.filter(params.slice(:by_status, :by_book_title_or_author_name_or_code))
+                    .page params[:page]
   end
 
   def new

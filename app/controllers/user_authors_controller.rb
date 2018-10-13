@@ -1,6 +1,6 @@
 class UserAuthorsController < ApplicationController
   def index
-    @authors = Author.all
+    @authors = Author.all.page params[:page]
   end
 
   def show

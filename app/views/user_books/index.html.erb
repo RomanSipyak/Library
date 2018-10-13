@@ -106,7 +106,9 @@
                style='border-radius: 7px;background-color: #da7916b8;'
                <% end %>
                >
-            <h3>Tile Of Book:  <td><%= link_to book.title, user_book_path(book.id) %></td></h3>
+            <h3>Tile Of Book:
+              <td><%= link_to book.title, user_book_path(book.id) %></td>
+            </h3>
             <p class='card-description'>
               <strong>Author:  <%= book.author.name %></strong><br>
               <strong>Language:  <%= book.language.language %></strong><br>
@@ -138,6 +140,13 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <% unless @books.empty? %>
+        <%= paginate @books, outer_window: 3, class: "pagination" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
