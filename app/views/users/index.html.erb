@@ -5,12 +5,12 @@
       <div class='panel-heading'>
         <div class='row'>
           <%= form_tag users_path, method: :get do %>
-            <div class="row" >
-              <div class="col-md-2" style="margin: 7px ">
+            <div class='row' >
+              <div class='col-md-2' style='margin: 7px '>
                 <%= select_tag :by_debtor, options_for_select([['Debtor', true], ['Not debtor', false], ['No filtre', nil]], nil) %>
               </div>
-              <div class="col-md-3">
-                <div><%= submit_tag 'Search', class: 'btn btn-ms btn-success ', style: "margin-left: 5px;" %></div>
+              <div class='col-md-3'>
+                <div><%= submit_tag 'Search', class: 'btn btn-ms btn-success ', style: 'margin-left: 5px;' %></div>
               </div>
             </div>
           <% end %>
@@ -41,10 +41,10 @@
               <td><%= link_to user.username, user_path(user.id) %></td>
               <td><%= link_to user.email, user_path(user.id) %></td>
               <td><%= link_to user_path(user.id) do %>
-                  <%= user.admin ? "Yes" : "No" %>
+                  <%= user.admin ? 'Yes' : 'No' %>
                 <% end %>
               </td>
-              <td>  <%= user.debtor ? "Yes" : "No" %> </td>
+              <td>  <%= user.debtor ? 'Yes' : 'No' %> </td>
             </tr>
           <% end %>
           </tbody>

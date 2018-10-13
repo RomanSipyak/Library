@@ -15,30 +15,30 @@
     <h4><%= @status %></h4>
     <%= form_for @book do |f| %>
       <div class='form-group'>
-        <div class="row">
-          <div class="col-md-6">
-            <%= label_tag(:title, "Title for book") %>
+        <div class='row'>
+          <div class='col-md-6'>
+            <%= label_tag(:title, 'Title for book') %>
             <%= f.text_field :title, class: 'form-control' %><br>
           </div>
-          <div class="col-md-6">
-            <%= label_tag(:year, "Year of release") %><br>
+          <div class='col-md-6'>
+            <%= label_tag(:year, 'Year of release') %><br>
             <%= select_year Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 1000, :field_name => :year, :prefix => :book %>
           </div>
         </div>
-        <%= label_tag(:language, "Language of book") %><br>
+        <%= label_tag(:language, 'Language of book') %><br>
         <%= f.collection_select :language_id, Language.order(:language), :id, :language, prompt: true %><br>
-        <div class="row">
-          <div class="col-md-8">
-            <%= label_tag(:description, "Description of book") %>
+        <div class='row'>
+          <div class='col-md-8'>
+            <%= label_tag(:description, 'Description of book') %>
             <%= f.text_area :description, class: 'form-control' %><br>
           </div>
-          <div class="col-md-4">
-            <div class="row">
-              <%= label_tag(:language, "Author of book") %><br>
+          <div class='col-md-4'>
+            <div class='row'>
+              <%= label_tag(:language, 'Author of book') %><br>
               <%= f.collection_select :author_id, Author.order(:name), :id, :name, prompt: true %><br>
             </div>
-            <div class="row">
-              <%= label_tag(:language, "Category of book") %><br>
+            <div class='row'>
+              <%= label_tag(:language, 'Category of book') %><br>
               <%= f.collection_select :category_id, Category.order(:title), :id, :title, prompt: true %><br>
             </div>
           </div>

@@ -1,38 +1,38 @@
-<div class="panel panel-default">
-  <div class="panel-heading">Add your estimate<br>
+<div class='panel panel-default'>
+  <div class='panel-heading'>Add your estimate<br>
     <%= @status %>
   </div>
-  <div class="panel-body">
+  <div class='panel-body'>
     <%= form_for @estimate do |f| %>
-      <div class="review-block-rate">
-        <label type="button" class="btn btn-warning btn-xs" aria-label="Left Align" for="rating_1">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <div class='review-block-rate'>
+        <label type='button' class='btn btn-warning btn-xs' aria-label='Left Align' for='rating_1'>
+          <span class='glyphicon glyphicon-star' aria-hidden='true'></span>
         </label>
-        <label type="button" class="btn btn-warning btn-xs" aria-label="Left Align" for="rating_2">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <label type='button' class='btn btn-warning btn-xs' aria-label='Left Align' for='rating_2'>
+          <span class='glyphicon glyphicon-star' aria-hidden='true'></span>
         </label>
-        <label type="button" class="btn btn-warning btn-xs" aria-label="Left Align" for="rating_3">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <label type='button' class='btn btn-warning btn-xs' aria-label='Left Align' for='rating_3'>
+          <span class='glyphicon glyphicon-star' aria-hidden='true'></span>
         </label>
-        <label type="button" class="btn btn-warning btn-xs" aria-label="Left Align" for="rating_4">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <label type='button' class='btn btn-warning btn-xs' aria-label='Left Align' for='rating_4'>
+          <span class='glyphicon glyphicon-star' aria-hidden='true'></span>
         </label>
-        <label type="button" class="btn btn-warning btn-xs" aria-label="Left Align" for="rating_5">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <label type='button' class='btn btn-warning btn-xs' aria-label='Left Align' for='rating_5'>
+          <span class='glyphicon glyphicon-star' aria-hidden='true'></span>
         </label>
       </div>
       <%= hidden_field_tag 'book_id', @book.id %>
-      <div style="visibility: hidden;">
+      <div style='visibility: hidden;'>
         <%= radio_button_tag 'rating', '1' %><label>1</label>
         <%= radio_button_tag 'rating', '2' %><label>2</label>
         <%= radio_button_tag 'rating', '3' %><label>3</label>
         <%= radio_button_tag 'rating', '4' %><label>4</label>
         <%= radio_button_tag 'rating', '5' %><label>5</label>
       </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment">
-            <span class="glyphicon glyphicon-send"></span> Summit review
+      <div class='form-group'>
+        <div class='col-sm-offset-2 col-sm-10'>
+          <button class='btn btn-success btn-circle text-uppercase' type='submit' id='submitComment'>
+            <span class='glyphicon glyphicon-send'></span> Summit review
           </button>
         </div>
       </div>

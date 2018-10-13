@@ -1,6 +1,5 @@
-
-<div class="row" style="margin-bottom: 12px ">
-  <div class="col col-md-3 ">
+<div class='row' style='margin-bottom: 12px '>
+  <div class='col col-md-3 '>
     <button type='button' class='btn btn-info btn-ms' data-toggle='modal' data-target='#myModal'>
       Filter
     </button>
@@ -18,15 +17,15 @@
         </div>
         <div class='modal-body'>
           <%= form_tag user_books_path, method: :get do %>
-            <div class="panel-group">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse1">Languages</a>
+            <div class='panel-group'>
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <h4 class='panel-title'>
+                    <a data-toggle='collapse' href='#collapse1'>Languages</a>
                   </h4>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse">
-                  <div class="panel-body">
+                <div id='collapse1' class='panel-collapse collapse'>
+                  <div class='panel-body'>
                     <% @languages.each do |language| %>
                       <%= check_box_tag 'by_language_ids[]', language.id %>
                       <%= h language.language %>;
@@ -35,15 +34,15 @@
                 </div>
               </div>
             </div>
-            <div class="panel-group">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse2">Authors</a>
+            <div class='panel-group'>
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <h4 class='panel-title'>
+                    <a data-toggle='collapse' href='#collapse2'>Authors</a>
                   </h4>
                 </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                  <div class="panel-body">
+                <div id='collapse2' class='panel-collapse collapse'>
+                  <div class='panel-body'>
                     <% @authors.each do |author| %>
                       <%= check_box_tag 'by_authors_ids[]', author.id %>
                       <%= h author.name %>;
@@ -52,15 +51,15 @@
                 </div>
               </div>
             </div>
-            <div class="panel-group">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse3">Categories</a>
+            <div class='panel-group'>
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <h4 class='panel-title'>
+                    <a data-toggle='collapse' href='#collapse3'>Categories</a>
                   </h4>
                 </div>
-                <div id="collapse3" class="panel-collapse collapse">
-                  <div class="panel-body">
+                <div id='collapse3' class='panel-collapse collapse'>
+                  <div class='panel-body'>
                     <% @categories.all.each do |categories| %>
                       <%= check_box_tag 'by_category_ids[]', categories.id %>
                       <%= h categories.title %>;
@@ -69,8 +68,8 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
+            <div class='row'>
+              <div class='col-md-12'>
                 <%= text_field_tag 'by_title_or_name_fo_author', params[:by_title_or_name_fo_author],
                                    placeholder: 'code\name_title\name_author',
                                    class: 'form-control col-md-6',
@@ -78,8 +77,8 @@
               </div>
             </div>
             </div>
-            <div class="col-md-6">
-              <%= label_tag(:year, "Year of release") %><br>
+            <div class='col-md-6'>
+              <%= label_tag(:year, 'Year of release') %><br>
               <%= select_tag :by_year, options_for_select(@years, nil) %>
 
               <div><%= submit_tag 'Save' %></div>
@@ -95,20 +94,20 @@
   </div>
 </div>
 <!-- Modal -->
-<div class="container-fluid cards-row">
-  <div class="row">
+<div class='container-fluid cards-row'>
+  <div class='row'>
     <% @books.each do |book| %>
-      <div class="col-sm-6 col-md-4 article">
-        <div class="thumbnail" style="outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;">
-          <img src="https://1.bp.blogspot.com/-aFQ-W_KTFWQ/V6BdtpSUy6I/AAAAAAAAAH4/xD_U-BYItSsNvk1UGfROqLBzzU1h32oXQCLcB/s320/4-diwali-greeting-cards-by-ajay-acharya.jpg" alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-          <div class="caption"
-               <% if @free_books[book] > 0 %> style="border-radius: 7px;background-color: #28a745a6;"
+      <div class='col-sm-6 col-md-4 article'>
+        <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;'>
+          <img src='https://1.bp.blogspot.com/-aFQ-W_KTFWQ/V6BdtpSUy6I/AAAAAAAAAH4/xD_U-BYItSsNvk1UGfROqLBzzU1h32oXQCLcB/s320/4-diwali-greeting-cards-by-ajay-acharya.jpg' alt='Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards'>
+          <div class='caption'
+               <% if @free_books[book] > 0 %> style='border-radius: 7px;background-color: #28a745a6;'
                <% else %>
-               style="border-radius: 7px;background-color: #da7916b8;"
+               style='border-radius: 7px;background-color: #da7916b8;'
                <% end %>
                >
             <h3>Tile Of Book:  <td><%= link_to book.title, user_book_path(book.id) %></td></h3>
-            <p class="card-description">
+            <p class='card-description'>
               <strong>Author:  <%= book.author.name %></strong><br>
               <strong>Language:  <%= book.language.language %></strong><br>
               <strong>Rating:  <%= book.rating %></strong><br>
