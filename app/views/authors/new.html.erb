@@ -19,6 +19,8 @@
         <%= f.text_field :name, class: 'form-control' %><br>
         <label for='usr'>Author biography</label>
         <%= f.text_area :biography, class: 'form-control' %><br>
+        <%= f.hidden_field :image, value: @author.cached_image_data %>
+        <%= f.file_field :image %>
       </div>
       <%= f.submit 'Save', class: 'form-control' %>
     <% end %>
