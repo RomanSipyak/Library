@@ -41,6 +41,10 @@
               <%= label_tag(:language, 'Category of book') %><br>
               <%= f.collection_select :category_id, Category.order(:title), :id, :title, prompt: true %><br>
             </div>
+            <div class="row">
+              <%= f.hidden_field :image, value: @book.cached_image_data %>
+              <%= f.file_field :image %>
+            </div>
           </div>
         </div>
 

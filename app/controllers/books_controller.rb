@@ -1,10 +1,11 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!, :user_admin!
+
   def index
     @languages = Language.all
     @categories = Category.all
     @authors = Author.all
-    @years = Array.new(Time.now.year - 999) { |index| [(index + 1000).to_s, index + 1000] } << ['No filtre', nil]
+    @years = Array.new(Time.now.year - 999) {|index| [(index + 1000).to_s, index + 1000]} << ['No filtre', nil]
     @books = Book.filter(params.slice(:by_language_ids, :by_authors_ids, :by_category_ids, :by_year, :by_title_or_name_fo_author))
                  .page params[:page]
   end
@@ -58,6 +59,6 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:id, :title, :year,
-                                 :language_id, :author_id, :category_id, :description)
+                                 :language_id, :author_id, :category_id, :description, :image)
   end
 end

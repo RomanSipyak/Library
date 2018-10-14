@@ -33,10 +33,12 @@ class UserBooksController < ApplicationController
     @books_booking = {}
     bookings = current_user.bookings.by_status(:taken).page params[:page]
     @books = bookings.map {|booking| booking.unit.book}
+
     bookings.each {|booking| @books_booking[booking.unit.book] = booking}
   end
 
   def show_readed_books
     @books = current_user.bookings.booking_by_status_user_id(:returned, current_user.id).map {|booking| booking.unit.book}
+
   end
 end
