@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'shrine'
 gem 'kaminari'
+# Easy CORS setup for API
+gem 'rack-cors'
+gem 'active_model_serializers'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

@@ -25,8 +25,8 @@ default: &default
 development:
   <<: *default
   database: library_service_development
-  username: user2
-  password: query124
+  username:
+  password:
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -60,8 +60,8 @@ development:
 test:
   <<: *default
   database: library_service_test
-  username: user2
-  password: query124
+  username: 
+  password:
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: library_service_production
-  username: user2
-  password: query124
+  username:
+  password:
