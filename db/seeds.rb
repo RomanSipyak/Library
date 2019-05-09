@@ -729,150 +729,150 @@
     }
 }.each {|_k, v| Language.create(language: v[:name])}
 
-# {
-#     category1: {
-#         id: 1,
-#         title: 'Science fiction'
-#     },
-#     category2: {
-#         id: 2,
-#         title: 'Satire'
-#     },
-#     category3: {
-#         id: 3,
-#         title: 'Drama'
-#     },
-#     category4: {
-#         id: 4,
-#         title: 'Action and Adventure'
-#     },
-#     category5: {
-#         id: 5,
-#         title: 'Romance'
-#     },
-#     category6: {
-#         id: 6,
-#         title: 'Mystery'
-#     },
-#     category7: {
-#         id: 7,
-#         title: 'Horror',
-#         books_count: '2'
-#     },
-#     category8: {
-#         id: 8,
-#         title: 'Self help'
-#     },
-#     category9: {
-#         id: 9,
-#         title: 'Health'
-#     },
-#     category10: {
-#         id: 10,
-#         title: 'Guide'
-#     },
-#     category11: {
-#         id: 11,
-#         title: 'Travel'
-#     },
-#     category12: {
-#         id: 12,
-#         title: 'Childrens'
-#     },
-#     category13: {
-#         id: 13,
-#         title: 'Religion, Spirituality & New Age'
-#     },
-#     category14: {
-#         id: 14,
-#         title: 'Science'
-#     },
-#     category15: {
-#         id: 15,
-#         title: 'History'
-#     },
-#     category16: {
-#         id: 16,
-#         title: 'Math'
-#     },
-#     category17: {
-#         id: 17,
-#         title: 'Anthology'
-#     },
-#     category18: {
-#         id: 18,
-#         title: 'Poetry'
-#     },
-#     category19: {
-#         id: 19,
-#         title: 'Encyclopedias'
-#     },
-#     category20: {
-#         id: 20,
-#         title: 'Dictionaries'
-#     },
-#     category21: {
-#         id: 21,
-#         title: 'Comics'
-#     },
-#     category22: {
-#         id: 22,
-#         title: 'Art',
-#         books_count: 1
-#     },
-#     category23: {
-#         id: 23,
-#         title: 'Cookbooks'
-#     },
-#     category24: {
-#         id: 24,
-#         title: 'Diaries'
-#     },
-#     category25: {
-#         id: 25,
-#         title: 'Journals'
-#     },
-#     category26: {
-#         id: 26,
-#         title: 'Prayer books'
-#     },
-#     category27: {
-#         id: 27,
-#         title: 'Series'
-#     },
-#     category28: {
-#         id: 28,
-#         title: 'Trilogy'
-#     },
-#     category29: {
-#         id: 29,
-#         title: 'Biographies'
-#     },
-#     category30: {
-#         id: 30,
-#         title: 'Autobiographies',
-#         books_count: 1
-#     },
-#     category31: {
-#         id: 31,
-#         title: 'Fantasy',
-#         books_count: 1
-#     },
-#     category32: {
-#         id: 32,
-#         title: 'Novel',
-#         books_count: 6
-#     },
-#     category33: {
-#         id: 33,
-#         title: 'Memoir',
-#         books_count: 1
-#     }
-# }.each do |_k, v|
-#   a = v[:books_count] || 0
-#   Category.create(id: v[:id], title: v[:title], books_count: a)
-# end
-#
+{
+    category1: {
+        id: 1,
+        title: 'Science fiction'
+    },
+    category2: {
+        id: 2,
+        title: 'Satire'
+    },
+    category3: {
+        id: 3,
+        title: 'Drama'
+    },
+    category4: {
+        id: 4,
+        title: 'Action and Adventure'
+    },
+    category5: {
+        id: 5,
+        title: 'Romance'
+    },
+    category6: {
+        id: 6,
+        title: 'Mystery'
+    },
+    category7: {
+        id: 7,
+        title: 'Horror',
+        books_count: '2'
+    },
+    category8: {
+        id: 8,
+        title: 'Self help'
+    },
+    category9: {
+        id: 9,
+        title: 'Health'
+    },
+    category10: {
+        id: 10,
+        title: 'Guide'
+    },
+    category11: {
+        id: 11,
+        title: 'Travel'
+    },
+    category12: {
+        id: 12,
+        title: 'Childrens'
+    },
+    category13: {
+        id: 13,
+        title: 'Religion, Spirituality & New Age'
+    },
+    category14: {
+        id: 14,
+        title: 'Science'
+    },
+    category15: {
+        id: 15,
+        title: 'History'
+    },
+    category16: {
+        id: 16,
+        title: 'Math'
+    },
+    category17: {
+        id: 17,
+        title: 'Anthology'
+    },
+    category18: {
+        id: 18,
+        title: 'Poetry'
+    },
+    category19: {
+        id: 19,
+        title: 'Encyclopedias'
+    },
+    category20: {
+        id: 20,
+        title: 'Dictionaries'
+    },
+    category21: {
+        id: 21,
+        title: 'Comics'
+    },
+    category22: {
+        id: 22,
+        title: 'Art',
+        books_count: 1
+    },
+    category23: {
+        id: 23,
+        title: 'Cookbooks'
+    },
+    category24: {
+        id: 24,
+        title: 'Diaries'
+    },
+    category25: {
+        id: 25,
+        title: 'Journals'
+    },
+    category26: {
+        id: 26,
+        title: 'Prayer books'
+    },
+    category27: {
+        id: 27,
+        title: 'Series'
+    },
+    category28: {
+        id: 28,
+        title: 'Trilogy'
+    },
+    category29: {
+        id: 29,
+        title: 'Biographies'
+    },
+    category30: {
+        id: 30,
+        title: 'Autobiographies',
+        books_count: 1
+    },
+    category31: {
+        id: 31,
+        title: 'Fantasy',
+        books_count: 1
+    },
+    category32: {
+        id: 32,
+        title: 'Novel',
+        books_count: 6
+    },
+    category33: {
+        id: 33,
+        title: 'Memoir',
+        books_count: 1
+    }
+}.each do |_k, v|
+  a = v[:books_count] || 0
+  Category.create(id: v[:id], title: v[:title], books_count: a)
+end
+
 # {
 #     author1: {
 #         id: 1,
