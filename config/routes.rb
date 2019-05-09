@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :books, only: [:index]
     resources :authors, only: [:index, :show], param: :name
+    resources :categories, only: [:index, :show], param: :title
   end
   resources :estimates
   post '/books/:book_id/copies/add_one', to: 'copies#create_unit_for_book', as: 'add_unit_book'
