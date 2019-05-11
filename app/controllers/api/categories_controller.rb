@@ -9,7 +9,7 @@ module Api
     end
 
     def show
-      render json: @category
+      render json: @category.books
     end
 
     private
@@ -17,7 +17,7 @@ module Api
     def find
       @category = Category.find_by(title: params[:title])
       if @category
-        render json: @category
+        return @category
       else
         @errors = @category.errors.full_messages
         render json: @errors

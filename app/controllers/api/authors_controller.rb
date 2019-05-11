@@ -17,7 +17,7 @@ module Api
     def find
       @author = Author.find_by(name: params[:name])
       if @author
-        render json: @author
+        return @author
       else
         @errors = @author.errors.full_messages
         render json: @errors
