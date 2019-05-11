@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   end
   namespace :api do
+    post 'user_token' => 'user_token#create'
     resources :books, only: [:index]
     resources :authors, only: [:index, :show], param: :name
     resources :categories, only: [:index, :show], param: :title

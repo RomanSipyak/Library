@@ -7,6 +7,14 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :nullify
   has_many :estimates, dependent: :destroy
   has_many :books, through: :estimates
+  # Devise really dislike knock onii-chan (>_<)
+  # Necessary in order to use knox with devise
+  alias authenticate valid_password?
+
+  # Returns the user stored in the payload's subject
+  def self.from_token_payload payload
+    self.find payload["sub"]
+  end
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true

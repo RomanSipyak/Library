@@ -27,6 +27,8 @@ gem 'shrine'
 gem 'kaminari'
 # Easy CORS setup for API
 gem 'rack-cors'
+gem 'knock'
+gem 'jwt'
 gem 'active_model_serializers'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
