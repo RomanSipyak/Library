@@ -13,6 +13,10 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @units = @book.units
+    @units_owner_name = {}
+    @units.each do |unit|
+      @units_owner_name[unit] = unit.bookings.by_status(:taken).first.user.username unless unit.bookings.by_status(:taken).first.nil?
+    end
   end
 
   def new

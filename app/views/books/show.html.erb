@@ -57,6 +57,7 @@
               <th><em class='fa fa-cog'></em></th>
               <th class='hidden-xs'>ID</th>
               <th class='hidden-xs'>Available</th>
+              <th class='hidden-xs'>Owner</th>
             </tr>
             </thead>
             <tbody>
@@ -68,6 +69,11 @@
                 </td>
                 <td><%= unit.id %></td>
                 <td><%= unit.available %></td>
+                <% if unit.available %>
+                  <td>Not have owner</td>
+                <%else %>
+                  <td><%=@units_owner_name[unit]%></td>
+                <%end%>
               </tr>
             <% end %>
             </tbody>
