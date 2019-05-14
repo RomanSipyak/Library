@@ -9,16 +9,16 @@ class UserBooksController < ApplicationController
     @years = Array.new(Time.now.year - 999) {|index| [(index + 1000).to_s, index + 1000]} << ['No filtre', nil]
     @books = Book.filter(params.slice(:by_language_ids, :by_authors_ids, :by_category_ids, :by_year, :by_title_or_name_fo_author))
                  .page params[:page]
-    @free_books = {}
+    @free_units_count = {}
     @books.each do |book|
-      @free_books[book] = Unit.unit_available(true, book.id).count
+      @free_units_count[book] = Unit.unit_available(true, book.id).count
     end
   end
 
   def show
     @book = Book.find(params[:id])
-    @free_books = {}
-    @free_books[@book] = Unit.unit_available(true, @book.id).count
+    @free_units_count = {}
+    @free_units_count[@book] = Unit.unit_available(true, @book.id).count
 
     if Unit.unit_available(false, @book.id).count == @book.units_count
       order_bookings = Booking.booking_by_status_book_id(:taken, @book.id).order(end_booking: :desc)
@@ -33,7 +33,9 @@ class UserBooksController < ApplicationController
     @books_booking = {}
     bookings = current_user.bookings.by_status(:taken).page params[:page]
     @books = bookings.map {|booking| booking.unit.book}
-
+    # костиляка страшна
+    @books = Book.where(id: @books.map(&:id))
+    @books = @books.page params[:page]
     bookings.each {|booking| @books_booking[booking.unit.book] = booking}
   end
 

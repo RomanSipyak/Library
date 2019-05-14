@@ -101,7 +101,7 @@
         <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;'>
           <%= image_tag book.image_url, class: "img-responsive" if book.image_url %>
           <div class='caption'
-               <% if @free_books[book] > 0 %> style='border-radius: 7px;background-color: #28a745a6;'
+               <% if @free_units_count[book] > 0 %> style='border-radius: 7px;background-color: #28a745a6;'
                <% else %>
                style='border-radius: 7px;background-color: #da7916b8;'
                <% end %>
@@ -113,11 +113,11 @@
               <strong>Author:  <%= book.author.name %></strong><br>
               <strong>Language:  <%= book.language.language %></strong><br>
               <strong>Rating:  <%= book.rating %></strong><br>
-              <strong>Count of Free:</strong> <%= @free_books[book] %>\<%= book.units_count %></p>
+              <strong>Count of Free:</strong> <%= @free_units_count[book] %>\<%= book.units_count %></p>
             <% unless current_user %>
               <p>If you want do order you should to autorize</p>
             <% else %>
-              <% if @free_books[book] > 0 %>
+              <% if @free_units_count[book] > 0 %>
                 <% if current_user.bookings.by_status(:taken).count < 4 %>
                   <% if current_user.bookings.by_status(:owed).count == 0 %>
                     <%= form_with url: user_bookings_path do |form| %>

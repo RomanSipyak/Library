@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :unit
+
   enum status: {expectation: 0, taken: 1, returned: 2,
                 owed: 3}
 

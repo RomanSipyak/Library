@@ -16,9 +16,9 @@
               <li>Category:<%= @book.category.title %></li>
               <li>Language:<%= @book.language.language %></li>
               <li>Count of copies:<%= @book.units_count %></li>
-              <li>Count of free:<%= @free_books[@book] %></li>
+              <li>Count of free:<%= @free_units_count[@book] %></li>
               <li>Rating:  <%= @book.rating %></li>
-              <li>Count of ordes:<%= @book.units_count - @free_books[@book] %></li>
+              <li>Count of ordes:<%= @book.units_count - @free_units_count[@book] %></li>
               <li>Before this book be able days:<%= @day_whan_this_book_by_able %></li>
               <% if user_signed_in? && current_user.admin %>
                 <li>

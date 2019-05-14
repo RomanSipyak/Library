@@ -7,6 +7,7 @@ class Book < ApplicationRecord
   has_many :estimates, dependent: :destroy
   has_many :users, through: :estimates
 
+
   validates :title, presence: true
   validates :year, presence: true
   validates :description, presence: true
