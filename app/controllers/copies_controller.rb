@@ -1,10 +1,11 @@
 class CopiesController < ApplicationController
   before_action :authenticate_user!, :user_admin!
+
   def destroy
-    @unit = Unit.find_by(id: params[:id])
-    @unit.destroy
-    @book = Book.find(params[:book_id])
-    redirect_to book_path(@book)
+    unit = Unit.find_by(id: params[:id])
+    unit.destroy
+    book = Book.find(params[:book_id])
+    redirect_to book_path(book.id)
   end
 
   def create_unit_for_book
