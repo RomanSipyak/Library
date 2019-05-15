@@ -23,10 +23,8 @@ class AuthorsController < ApplicationController
     if @author.save
       @status = 'Author Create'
       @author = Author.new
-      render :new
-    else
-      render :new
     end
+      render :new
   end
 
   def update

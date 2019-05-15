@@ -32,10 +32,8 @@ class BooksController < ApplicationController
     if @book.save
       @status = 'Book Create'
       @book = Book.new
-      render :new
-    else
-      render :new
     end
+    render :new
   end
 
   def update
@@ -51,10 +49,8 @@ class BooksController < ApplicationController
     @book = Book.find_by(id: params[:id])
     if @book
       @book.destroy
-      redirect_to books_path
-    else
-      redirect_to books_path
     end
+    redirect_to books_path
   end
 
   def user_admin!
