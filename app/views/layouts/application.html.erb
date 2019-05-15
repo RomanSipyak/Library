@@ -26,8 +26,8 @@
     </div>
     <div class='collapse navbar-collapse' id='myNavbar'>
       <ul class='nav navbar-nav'>
-        <li><%= link_to 'Show All books', user_books_path %></li>
-        <li><%= link_to 'Show All authors', user_authors_path %></li>
+        <li><%= link_to 'Show All books', for_user_books_path %></li>
+        <li><%= link_to 'Show All authors', for_user_authors_path %></li>
         <% if user_signed_in?  %>
           <li class='dropdown'>
             <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
@@ -36,9 +36,9 @@
             </span>
             </a>
             <ul class='dropdown-menu'>
-              <li><%= link_to 'Show All books thats you take mow', show_taken_books_path %></li>
-              <li><%= link_to 'Show All books thats you read', readed_books_path %></li>
-              <li><%= link_to 'Show All your orders', user_bookings_path %></li>
+              <li><%= link_to 'Show All books thats you take mow', for_user_show_taken_books_path %></li>
+              <li><%= link_to 'Show All books thats you read', for_user_readed_books_path %></li>
+              <li><%= link_to 'Show All your orders', for_user_bookings_path %></li>
             </ul>
           </li>
         <% end %>
@@ -77,8 +77,8 @@
             </div>
             <div id='collapseOne' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingOne' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Add book', new_book_path %></li>
-                <li><%= link_to 'Show all books', books_path %></li>
+                <li><%= link_to 'Add book', new_admin_book_path %></li>
+                <li><%= link_to 'Show all books', admin_books_path %></li>
                 <!-- List Group End Here -->
               </div>
             </div>
@@ -94,8 +94,8 @@
             </div>
             <div id='collapseTwo' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingTwo' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Add author', new_author_path %></li>
-                <li><%= link_to 'Show all authors', authors_path %></li>
+                <li><%= link_to 'Add author', new_admin_author_path %></li>
+                <li><%= link_to 'Show all authors', admin_authors_path %></li>
                 <!-- List Group End Here -->
               </div>
             </div>
@@ -111,7 +111,7 @@
             </div>
             <div id='collapseThree' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingThree' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Show all user', users_path %></li>
+                <li><%= link_to 'Show all for_user', admin_users_path %></li>
 
                 <!-- List Group End Here -->
                 <!-- List Group End Here -->
@@ -129,7 +129,7 @@
             </div>
             <div id='collapseFour' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingFour' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Show all orders', bookings_path %></li>
+                <li><%= link_to 'Show all orders', admin_bookings_path %></li>
                 <!-- List Group End Here -->
                 <!-- List Group End Here -->
               </div>

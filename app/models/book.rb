@@ -25,7 +25,7 @@ class Book < ApplicationRecord
     joins(:category).where(categories: {id: by_category_ids})
   end
 
-  scope :by_title_or_name_fo_author, ->(filtre_atribut) do
+  scope :by_title_or_name_for_author, ->(filtre_atribut) do
     author = Author.arel_table
     book = Book.arel_table
     joins(:author).where((author[:name].matches("%#{filtre_atribut}%")).or(book[:title].matches("%#{filtre_atribut}%")))

@@ -7,7 +7,7 @@
           <div class='col col-xs-6'>
           </div>
           <div class='col col-xs-6 text-right'>
-            <%= link_to 'Create author', new_author_path, class: 'btn btn-sm btn-primary' %>
+            <%= link_to 'Create author', new_admin_author_path, class: 'btn btn-sm btn-primary' %>
           </div>
         </div>
       </div>
@@ -28,15 +28,15 @@
           <% @authors.each do |author| %>
             <tr>
               <td align='center'>
-                <%= link_to new_author_path(author_id: author.id), class: ' btn btn-default fa fa-pencil' do %>
+                <%= link_to new_admin_author_path(author_id: author.id), class: ' btn btn-default fa fa-pencil' do %>
 
                 <% end %>
-                <%= link_to author_path(author), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-trash' do %>
+                <%= link_to admin_author_path(author), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-trash' do %>
 
                 <% end %>
               </td>
               <td class='hidden-xs'><%= author.id %></td>
-              <td><%= link_to author.name, author_path(author.id) %></td>
+              <td><%= link_to author.name, admin_author_path(author.id) %></td>
               <td><%= author.biography[0..30] + '...' %></td>
             </tr>
           <% end %>

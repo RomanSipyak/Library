@@ -1,40 +1,48 @@
 Rails.application.routes.draw do
-  get 'user_authors/index'
-  get 'user_authors/new'
-  get 'user_authors/create'
-  get 'user_authors/update'
-  get 'user_authors/show'
-  get 'user_authors/destroy'
+=begin
+  get 'authors/index'
+  get 'authors/new'
+  get 'authors/create'
+  get 'authors/update'
+  get 'authors/show'
+  get 'authors/destroy'
   get 'estimates/index'
   get 'estimates/new'
   get 'estimates/create'
   get 'estimates/update'
   get 'estimates/show'
   get 'estimates/destroy'
+=end
+
+  root to: 'for_user/books#index'
   devise_for :users
-  resources :authors, only: [:index, :show, :new, :create, :update, :destroy]
-  resources :user_authors, only: [:index, :show]
-  resources :users, only: [:index, :show, :update]
 
-  get '/user/bookings/show/taken/books', to: 'user_books#show_taken_books', as: 'show_taken_books'
-  get '/user/bookings/show/readed/books', to: 'user_books#show_readed_books', as: 'readed_books'
-  resources :bookings, only: [:index, :new, :update, :destroy]
-  post '/bookings/update_bookings_statuses', to: 'bookings#update_bookings_statuses', as: 'update_bookings_statuses'
-  post '/bookings/update_booking_status', to: 'bookings#update_booking_status', as: 'update_booking_status'
-  resources :books, only: [:index, :show, :new, :create, :update, :destroy] do
-    resources :copies, only: [:destroy]
+  resources :estimates
 
-  end
   namespace :api do
     post 'user_token' => 'user_token#create'
     resources :books, only: [:index]
     resources :authors, only: [:index, :show], param: :name
     resources :categories, only: [:index, :show], param: :title
   end
-  resources :estimates
-  post '/books/:book_id/copies/add_one', to: 'copies#create_unit_for_book', as: 'add_unit_book'
-  post '/books/:book_id/copies/delete_last', to: 'copies#delete_last_unit_for_book', as: 'delete_unit_book'
-  resources :user_books, only: [:index, :show]
-  resources :user_bookings, only: [:index, :create]
-  root to: 'user_books#index'
+
+  namespace :admin do
+    resources :authors, only: [:index, :show, :new, :create, :update, :destroy]
+    resources :users, only: [:index, :show, :update]
+    resources :bookings, only: [:index, :new, :update, :destroy]
+    resources :books, only: [:index, :show, :new, :create, :update, :destroy] do
+      resources :copies, only: [:destroy]
+    end
+    post '/bookings/update_bookings_statuses', to: 'bookings#update_bookings_statuses', as: 'update_bookings_statuses'
+    post '/bookings/update_booking_status', to: 'bookings#update_booking_status', as: 'update_booking_status'
+    post '/books/:book_id/copies/add_one', to: 'copies#create_unit_for_book', as: 'add_unit_book'
+    post '/books/:book_id/copies/delete_last', to: 'copies#delete_last_unit_for_book', as: 'delete_unit_book'
+  end
+  namespace :for_user do
+    resources :authors, only: [:index, :show]
+    resources :books, only: [:index, :show]
+    resources :bookings, only: [:index, :create]
+    get '/bookings/show/taken/books', to: 'books#show_taken_books', as: 'show_taken_books'
+    get '/bookings/show/readed/books', to: 'books#show_readed_books', as: 'readed_books'
+  end
 end

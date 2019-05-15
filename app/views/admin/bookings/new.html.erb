@@ -29,7 +29,7 @@
       </div>
     <% end %>
     <h4><%= @status %></h4>
-    <%= form_for @booking do |f| %>
+    <%= form_for [:admin,@booking] do |f| %>
       <div class='form-group'>
         <div class='row'>
           <div class='col-md-6'>

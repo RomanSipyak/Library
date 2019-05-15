@@ -35,13 +35,13 @@
             </table>
             <% if current_user.admin %>
               <% if @user.admin %>
-                <%= form_with url: user_path, method: :patch do |form| %>
+                <%= form_with url: admin_user_path, method: :patch do |form| %>
                   <%= hidden_field_tag(:user_id, @user.id) %>
                   <%= hidden_field_tag(:admin, false) %>
-                  <%= form.submit 'Change on simple user', class: ' btn btn-sm btn-info ' %>
+                  <%= form.submit 'Change on simple for_user', class: ' btn btn-sm btn-info ' %>
                 <% end %>
               <% else %>
-                <%= form_with url:  user_path, method: :patch do |form| %>
+                <%= form_with url:  admin_user_path, method: :patch do |form| %>
                   <%= hidden_field_tag(:user_id, @user.id) %>
                   <%= hidden_field_tag(:admin, true) %>
                   <%= form.submit 'Change on admin', class: 'btn btn-xs btn-success ' %>
@@ -54,8 +54,8 @@
       <!--            <div class='panel-footer'>
                     <a data-original-title='Broadcast Message' data-toggle='tooltip' type='button' class='btn btn-sm btn-primary'><i class='glyphicon glyphicon-envelope'></i></a>
                     <span class='pull-right'>
-                      <a href='edit.html' data-original-title='Edit this user' data-toggle='tooltip' type='button' class='btn btn-sm btn-warning'><i class='glyphicon glyphicon-edit'></i></a>
-                      <a data-original-title='Remove this user' data-toggle='tooltip' type='button' class='btn btn-sm btn-danger'><i class='glyphicon glyphicon-remove'></i></a>
+                      <a href='edit.html' data-original-title='Edit this for_user' data-toggle='tooltip' type='button' class='btn btn-sm btn-warning'><i class='glyphicon glyphicon-edit'></i></a>
+                      <a data-original-title='Remove this for_user' data-toggle='tooltip' type='button' class='btn btn-sm btn-danger'><i class='glyphicon glyphicon-remove'></i></a>
                     </span>
                </div>-->
     </div>

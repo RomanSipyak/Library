@@ -1,4 +1,10 @@
-<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+<div class='row' style='margin-bottom: 12px '>
+  <div class='col col-md-3 '>
+    <button type='button' class='btn btn-info btn-ms' data-toggle='modal' data-target='#myModal'>
+      Filter
+    </button>
+  </div>
+</div>
 <div class='row'>
   <!-- Modal -->
   <div id='myModal' class='modal fade' role='dialog'>
@@ -10,7 +16,7 @@
           <h4 class='modal-title'>Filter for books</h4>
         </div>
         <div class='modal-body'>
-          <%= form_tag books_path, method: :get do %>
+          <%= form_tag for_user_books_path, method: :get do %>
             <div class='panel-group'>
               <div class='panel panel-default'>
                 <div class='panel-heading'>
@@ -58,9 +64,6 @@
                       <%= check_box_tag 'by_category_ids[]', categories.id %>
                       <%= h categories.title %>;
                     <% end %>
-                    <!-- <%#= collection_check_boxes(:by_language_ids, :by_language_ids, Language.all, :id, :language) do |c| %><br>
-                      <%#= c.label { c.check_box + '  ' + c.text } %>
-                    <%# end %>-->
                   </div>
                 </div>
               </div>
@@ -91,74 +94,59 @@
   </div>
 </div>
 <!-- Modal -->
-<div class='row'>
-  <div class='col-md-12'>
-    <div class='panel panel-default panel-table'>
-      <div class='panel-heading'>
-        <div class='row'>
-          <div class='col col-md-3 col-md-offset-3'>
-            <button type='button' class='btn btn-info btn-ms' data-toggle='modal' data-target='#myModal'>
-              Filter
-            </button>
-          </div>
-          <div class='col col-md-3 col-md-offset-3'>
-            <%= link_to 'Create book', new_book_path, class: 'btn btn-sm btn-primary' %>
-          </div>
-        </div>
-      </div>
-      <div class='panel-body table-responsive'>
-        <table class='table table-striped table-bordered table-hover table-list'>
-          <thead>
-          <tr>
-            <h1><%= @status %></h1>
-          </tr>
-          <tr>
-            <th><em class='fa fa-cog'></em></th>
-            <th class='hidden-xs'>ID</th>
-            <th class='hidden-xs'>Copies</th>
-            <th>Title</th>
-            <th>Year of release</th>
-            <th>Category</th>
-            <th>Author</th>
-            <th>Rating:</th>
-            <th>Description</th>
-          </tr>
-          </thead>
-          <tbody>
+<div class='container-fluid cards-row'>
+  <div class='row'>
+    <% @books.each do |book| %>
+      <div class='col-sm-6 col-md-4 article'>
+        <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;'>
+          <%= image_tag book.image_url, class: "img-responsive" if book.image_url %>
+          <div class='caption'
+               <% if @free_units_count[book] > 0 %> style='border-radius: 7px;background-color: #28a745a6;'
+               <% else %>
+               style='border-radius: 7px;background-color: #da7916b8;'
+               <% end %>
+               >
+            <h3>Tile Of Book:
+              <td><%= link_to book.title,for_user_book_path(book.id) %></td>
+            </h3>
+            <p class='card-description'>
+              <strong>Author:  <%= book.author.name %></strong><br>
+              <strong>Language:  <%= book.language.language %></strong><br>
+              <strong>Rating:  <%= book.rating %></strong><br>
+              <strong>Count of Free:</strong> <%= @free_units_count[book] %>\<%= book.units_count %></p>
+            <% unless current_user %>
+              <p>If you want do order you should to autorize</p>
+            <% else %>
+              <% if @free_units_count[book] > 0 %>
+                <% if current_user.bookings.by_status(:taken).count < 4 %>
+                  <% if current_user.bookings.by_status(:owed).count == 0 %>
+                    <%= form_with url: for_user_bookings_path do |form| %>
+                      <%= hidden_field_tag(:book_id, book.id) %>
+                      <%= form.submit 'Do order', class: 'btn btn-success fa fa-check fa-1' %>
+                    <% end %>
 
-          <% @books.each do |book| %>
-            <tr>
-              <td align='center'>
-                <%= link_to new_book_path(book_id: book.id), class: ' btn btn-warning fa fa-pencil' do %>
+                  <% else %>
+                    <p>You are debtor</p>
+                  <% end %>
+                <% else %>
+                  <p>You have too much bookings</p>
                 <% end %>
-                <%= link_to book_path(book), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-trash' do %>
-                <% end %>
-                <%= link_to add_unit_book_path(book), method: :post, class: 'btn btn-success fa fa-plus' do %>
-                <% end %>
-                <%= link_to delete_unit_book_path(book), method: :post, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-minus-circle' do %>
-                <% end %>
-              </td>
-              <td><%= link_to book.id, book_path(book.id) %></td>
-              <td><%= link_to book.units_count, book_path(book.id) %></td>
-              <td><%= link_to book.title, book_path(book.id) %></td>
-              <td><%= link_to book.year, book_path(book.id) %></td>
-              <td><%= link_to book.category.title, book_path(book.id) %></td>
-              <td><%= link_to book.author.name, book_path(book.id) %></td>
-              <td><%= book.rating %></td>
-              <td><%= book.description[0..30] + '...' %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-            <% unless @books.empty? %>
-              <%= paginate @books, outer_window: 3, class: "pagination" %>
+              <% else %>
+                <p>Not have free books</p>
+              <% end %>
             <% end %>
           </div>
+          <%= @msg %>
         </div>
       </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <% unless @books.empty? %>
+        <%= paginate @books, outer_window: 3, class: "pagination" %>
+      <% end %>
     </div>
   </div>
 </div>
-</div>
+

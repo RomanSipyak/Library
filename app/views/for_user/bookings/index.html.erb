@@ -29,11 +29,11 @@
           <% @bookings.each do |booking| %>
             <tr>
               <% if @books_booking[booking] %>
-                <td><%= link_to booking.id, user_book_path(@books_booking[booking]) %></td>
-                <td><%= link_to booking.unit_id, user_book_path(@books_booking[booking]) %></td>
-                <td><%= link_to booking.start_booking, user_book_path(@books_booking[booking]) %></td>
-                <td><%= link_to booking.end_booking, user_book_path(@books_booking[booking]) %></td>
-                <td><%= link_to booking.status, user_book_path(@books_booking[booking]) %></td>
+                <td><%= link_to booking.id, for_user_book_path(@books_booking[booking]) %></td>
+                <td><%= link_to booking.unit_id, for_user_book_path(@books_booking[booking]) %></td>
+                <td><%= link_to booking.start_booking, for_user_book_path(@books_booking[booking]) %></td>
+                <td><%= link_to booking.end_booking, for_user_book_path(@books_booking[booking]) %></td>
+                <td><%= link_to booking.status, for_user_book_path(@books_booking[booking]) %></td>
 
               <% else %>
                 <td><%= booking.id %></td>

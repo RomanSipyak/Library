@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "user_books/create.html.erb", type: :view do
+RSpec.describe "books/create.html.erb", type: :view do
 end

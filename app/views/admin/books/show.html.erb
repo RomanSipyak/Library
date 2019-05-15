@@ -64,7 +64,7 @@
             <% @units.each do |unit| %>
               <tr>
                 <td align='center'>
-                  <%= link_to book_copy_path(id: unit.id, book_id: @book.id), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-minus-circle' do %>
+                  <%= link_to admin_book_copy_path(id: unit.id, book_id: @book.id), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-minus-circle' do %>
                   <% end %>
                 </td>
                 <td><%= unit.id %></td>

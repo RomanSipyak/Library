@@ -5,7 +5,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.datetime :end_booking, null: false
       t.string :code
       t.references :unit
-      t.references :user
+      t.references :for_user
       t.integer :status, default: 0
       t.timestamps
     end

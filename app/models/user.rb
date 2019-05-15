@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # Necessary in order to use knox with devise
   alias authenticate valid_password?
 
-  # Returns the user stored in the payload's subject
+  # Returns the for_user stored in the payload's subject
   def self.from_token_payload payload
     self.find payload["sub"]
   end
