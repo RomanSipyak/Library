@@ -3,12 +3,8 @@ class EstimatesController < ApplicationController
 
   def new
     @book = Book.find(params[:book_id])
-
-    @estimate = if @book.estimates.by_user_id(current_user.id).count == 1
-                  @book.estimates.by_user_id(current_user.id).first
-                else
-                  Estimate.new
-                end
+    @estimate = @book.estimates.find_by(user_id: current_user.id)
+    @estimate ||= Estimate.new
   end
 
   def create
