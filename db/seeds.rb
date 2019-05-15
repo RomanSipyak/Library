@@ -883,7 +883,7 @@ end
 #     author2: {
 #         id: 2,
 #         name: 'Stephen King',
-#         biography: 'Stephen Edwin King is an American author of horror, supernatural fiction, suspense, science fiction and fantasy. His books have sold more than 350 million copies, many of which have been adapted into feature films, miniseries, television series, and comic books. King has published 58 novels, including seven under the pen name Richard Bachman, and six non-fiction books. He has written around 200 short stories, most of which have been published in book collections.',
+#         biography: 'Stephen Edwin King is an American author of horror, supernatural fiction, suspense, science fiction and fantasy. His books have sold more than 350 million units, many of which have been adapted into feature films, miniseries, television series, and comic books. King has published 58 novels, including seven under the pen name Richard Bachman, and six non-fiction books. He has written around 200 short stories, most of which have been published in book collections.',
 #         books_count: 5
 #     },
 #     author3: {
@@ -908,7 +908,7 @@ end
 #     author6: {
 #         id: 6,
 #         name: 'J. K. Rowling',
-#         biography: 'Joanne Rowling (born 31 July 1965), writing under the pen names J. K. Rowling and Robert Galbraith, is a British novelist, philanthropist, film producer, television producer and screenwriter, best known for writing the Harry Potter fantasy series. The books have won multiple awards, and sold more than 500 million copies, becoming the best-selling book series in history. They have also been the basis for a film series, over which Rowling had overall approval on the scripts and was a producer on the final films in the series.',
+#         biography: 'Joanne Rowling (born 31 July 1965), writing under the pen names J. K. Rowling and Robert Galbraith, is a British novelist, philanthropist, film producer, television producer and screenwriter, best known for writing the Harry Potter fantasy series. The books have won multiple awards, and sold more than 500 million units, becoming the best-selling book series in history. They have also been the basis for a film series, over which Rowling had overall approval on the scripts and was a producer on the final films in the series.',
 #         books_count: 2
 #     }
 # }.each do |_k, v|
@@ -950,7 +950,7 @@ end
 #         id: 4,
 #         title: 'Le Petit Prince',
 #         year: 1943,
-#         description: 'The novella is one of the most-translated books in the world and has been voted the best book of the 20th century in France. Translated into 300 languages and dialects, selling nearly two million copies annually, and with year-to-date sales of over 140 million copies worldwide, it has become one of the best-selling books ever published.',
+#         description: 'The novella is one of the most-translated books in the world and has been voted the best book of the 20th century in France. Translated into 300 languages and dialects, selling nearly two million units annually, and with year-to-date sales of over 140 million units worldwide, it has become one of the best-selling books ever published.',
 #         author_id: 3,
 #         category_id: 32,
 #         language_id: 47
@@ -1015,7 +1015,7 @@ end
 #         id: 11,
 #         title: 'The Casual Vacancy',
 #         year: 2012,
-#         description: 'Major themes in the novel are class, politics, and social issues such as drugs, prostitution and rape. The novel was the fastest-selling in the United Kingdom in three years and had the second best-selling opening week for an adult novel there since Dan Browns The Lost Symbol. It became the 15th best-selling book of 2012 during its first week of release. Within the first three weeks the books total sales topped one million copies in English in all formats across all territories, including the US and the UK The book also set a Goodreads record for the all-time biggest "started reading" day, later winning the Best Fiction category in the Goodreads Choice Awards 2012.',
+#         description: 'Major themes in the novel are class, politics, and social issues such as drugs, prostitution and rape. The novel was the fastest-selling in the United Kingdom in three years and had the second best-selling opening week for an adult novel there since Dan Browns The Lost Symbol. It became the 15th best-selling book of 2012 during its first week of release. Within the first three weeks the books total sales topped one million units in English in all formats across all territories, including the US and the UK The book also set a Goodreads record for the all-time biggest "started reading" day, later winning the Best Fiction category in the Goodreads Choice Awards 2012.',
 #         author_id: 6,
 #         category_id: 32,
 #         language_id: 40

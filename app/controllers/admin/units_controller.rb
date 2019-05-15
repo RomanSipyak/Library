@@ -1,5 +1,5 @@
 module Admin
-  class CopiesController < ApplicationController
+  class UnitsController < ApplicationController
     before_action :authenticate_user!, :user_admin!
 
     def destroy
