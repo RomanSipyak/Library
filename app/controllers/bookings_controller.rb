@@ -23,12 +23,8 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find_by(id: params[:id])
-    if @booking
-      @booking.destroy
-      redirect_to bookings_path
-    else
-      redirect_to bookings_path
-    end
+    @booking.destroy if @booking
+    redirect_to bookings_path
   end
 
   def update_bookings_statuses
