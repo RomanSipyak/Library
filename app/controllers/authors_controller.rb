@@ -45,7 +45,6 @@ class AuthorsController < ApplicationController
       redirect_to authors_path
       return
     end
-
   end
 
   def user_admin!
