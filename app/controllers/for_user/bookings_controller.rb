@@ -22,7 +22,7 @@ module ForUser
         booking[:code] = SecureRandom.hex(7)
         booking.save
       end
-      redirect_to user_bookings_path
+      redirect_to for_user_bookings_path
     end
   end
 end

@@ -20,6 +20,7 @@
               <li>Rating:  <%= @book.rating %></li>
               <li>Count of ordes:<%= @book.units_count - @free_units_count[@book] %></li>
               <li>Before this book be able days:<%= @day_whan_this_book_by_able %></li>
+<!--              TODO виправити це-->
               <% if user_signed_in? && current_user.admin %>
                 <li>
                   <%= form_tag new_estimate_path, method: :get do %>
