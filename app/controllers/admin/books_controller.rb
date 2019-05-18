@@ -50,6 +50,7 @@ module Admin
       @book = Book.find_by(id: params[:id])
       if @book
         if @book.update(in_history: true)
+          @book.units.update_all(in_history: true, updated_at: DateTime.now)
           redirect_to admin_books_path
         end
       end
