@@ -49,9 +49,10 @@ module Admin
     def destroy
       @book = Book.find_by(id: params[:id])
       if @book
-        @book.destroy
+        if @book.update(in_history: true)
+          redirect_to admin_books_path
+        end
       end
-      redirect_to admin_books_path
     end
 
     def user_admin!
