@@ -16,11 +16,11 @@ module Admin
       redirect_to admin_books_path
     end
 
-    def delete_last_unit_for_book
-      @units = Unit.where(book_id: params[:book_id])
-      @units.last.destroy unless @units.empty?
-      redirect_to admin_books_path
-    end
+    # def delete_last_unit_for_book
+    #   @units = Unit.where(book_id: params[:book_id])
+    #   @units.last.destroy unless @units.empty?
+    #   redirect_to admin_books_path
+    # end
 
     def user_admin!
       redirect_to root_path unless current_user.admin

@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     post '/bookings/update_bookings_statuses', to: 'bookings#update_bookings_statuses', as: 'update_bookings_statuses'
     post '/bookings/update_booking_status', to: 'bookings#update_booking_status', as: 'update_booking_status'
     post '/books/:book_id/units/add_one', to: 'units#create_unit_for_book', as: 'add_unit_book'
-    post '/books/:book_id/units/delete_last', to: 'units#delete_last_unit_for_book', as: 'delete_unit_book'
+    # post '/books/:book_id/units/delete_last', to: 'units#delete_last_unit_for_book', as: 'delete_unit_book'
   end
   namespace :for_user do
     resources :authors, only: [:index, :show]

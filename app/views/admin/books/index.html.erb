@@ -135,8 +135,8 @@
                 <% end %>
                 <%= link_to admin_add_unit_book_path(book), method: :post, class: 'btn btn-success fa fa-plus' do %>
                 <% end %>
-                <%= link_to admin_delete_unit_book_path(book), method: :post, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-minus-circle' do %>
-                <% end %>
+                <%#= link_to admin_delete_unit_book_path(book), method: :post, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-minus-circle' do %>
+                <%# end %>
               </td>
               <td><%= link_to book.id, admin_book_path(book.id) %></td>
               <td><%= link_to book.units_count, admin_book_path(book.id) %></td>
