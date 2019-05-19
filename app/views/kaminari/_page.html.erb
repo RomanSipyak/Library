@@ -1,9 +1,9 @@
 <% if page.current? %>
-  <li class='active'>
+  <li class='active' style="margin: 0px; padding: 0px">
     <%= content_tag :a, page, data: { remote: remote }, rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)) %>
   </li>
 <% else %>
-  <li>
+  <li style="margin: 0px; padding: 0px">
     <%= link_to page, url, remote: remote, rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)) %>
   </li>
 <% end %>

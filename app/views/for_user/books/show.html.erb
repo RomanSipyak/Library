@@ -20,7 +20,7 @@
               <li>Rating:  <%= @book.rating %></li>
               <li>Count of ordes:<%= @book.units_count - @free_units_count[@book] %></li>
               <li>Before this book be able days:<%= @day_whan_this_book_by_able %></li>
-<!--              TODO виправити це-->
+              <!--              TODO виправити це-->
               <% if user_signed_in? && current_user.admin %>
                 <li>
                   <%= form_tag new_estimate_path, method: :get do %>
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class='row' style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: dashed; border-width: 7px;'>
+    <div class='row' style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: groove; border-width: 3px;'>
       <p style='word-break: break-all;'><%= @book.description %></p>
     </div>
   </div>

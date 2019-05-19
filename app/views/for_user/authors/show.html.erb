@@ -12,14 +12,16 @@
           </div>
         </div>
         <div class="row">
-          <div class='col-md-12 desc card'>
-            <ul>
-              <li>Author Name:<%= @author.name %></li>
-            </ul>
+          <div class='col-md-12 '>
+            <p style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: groove; border-width: 4px;'>
+              Author Name:<%= @author.name %>
+            </p>
           </div>
         </div>
-        <div class='row' style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: dashed; border-width: 7px;'>
-          <p style='word-break: break-all;'><%= @author.biography %></p>
+        <div class='row' style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: groove; border-width: 7px;'>
+          <p style='word-break: break-all;'>
+            <%= @author.biography %>
+          </p>
         </div>
       </div>
     </div>

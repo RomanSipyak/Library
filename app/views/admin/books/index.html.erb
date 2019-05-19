@@ -1,6 +1,6 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+<!-- Modal -->
 <div class='row'>
-  <!-- Modal -->
   <div id='myModal' class='modal fade' role='dialog'>
     <div class='modal-dialog'>
       <!-- Modal content-->
@@ -73,35 +73,38 @@
                                    style: 'width: 220px' %>
               </div>
             </div>
-            </div>
             <div class='col-md-6'>
               <%= label_tag(:year, 'Year of release') %><br>
               <%= select_tag :by_year, options_for_select(@years, nil) %>
-
               <div><%= submit_tag 'Save' %></div>
             </div>
-
           <% end %>
-
-          <div class='modal-footer'>
-            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-          </div>
-          </div>
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <!-- Modal -->
+
 <div class='row'>
   <div class='col-md-12'>
     <div class='panel panel-default panel-table'>
       <div class='panel-heading'>
         <div class='row'>
-          <div class='col col-md-3 col-md-offset-3'>
+          <div class='col col-md-3 col-md-offset-1'>
             <button type='button' class='btn btn-info btn-ms' data-toggle='modal' data-target='#myModal'>
               Filter
             </button>
           </div>
-          <div class='col col-md-3 col-md-offset-3'>
+          <div class='col col-md-5 '>
+              <% unless @books.empty? %>
+                <%= paginate @books, outer_window: 3, class: "pagination", style: "margin: 0px; padding: 0px" %>
+              <% end %>
+          </div>
+          <div class='col col-md-3 '>
             <%= link_to 'Create book', new_admin_book_path, class: 'btn btn-sm btn-primary' %>
           </div>
         </div>
@@ -125,7 +128,6 @@
           </tr>
           </thead>
           <tbody>
-
           <% @books.each do |book| %>
             <tr>
               <td align='center'>
@@ -138,27 +140,35 @@
                 <%#= link_to admin_delete_unit_book_path(book), method: :post, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-minus-circle' do %>
                 <%# end %>
               </td>
-              <td><%= link_to book.id, admin_book_path(book.id) %></td>
-              <td><%= link_to book.units_count, admin_book_path(book.id) %></td>
-              <td><%= link_to book.title, admin_book_path(book.id) %></td>
-              <td><%= link_to book.year, admin_book_path(book.id) %></td>
-              <td><%= link_to book.category.title, admin_book_path(book.id) %></td>
-              <td><%= link_to book.author.name, admin_book_path(book.id) %></td>
-              <td><%= book.rating %></td>
-              <td><%= book.description[0..30] + '...' %></td>
+              <td>
+                <%= link_to book.id, admin_book_path(book.id) %>
+              </td>
+              <td>
+                <%= link_to book.units_count, admin_book_path(book.id) %>
+              </td>
+              <td>
+                <%= link_to book.title, admin_book_path(book.id) %>
+              </td>
+              <td>
+                <%= link_to book.year, admin_book_path(book.id) %>
+              </td>
+              <td>
+                <%= link_to book.category.title, admin_book_path(book.id) %>
+              </td>
+              <td>
+                <%= link_to book.author.name, admin_book_path(book.id) %>
+              </td>
+              <td>
+                <%= book.rating %>
+              </td>
+              <td>
+                <%= book.description[0..30] + '...' %>
+              </td>
             </tr>
           <% end %>
           </tbody>
         </table>
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-            <% unless @books.empty? %>
-              <%= paginate @books, outer_window: 3, class: "pagination" %>
-            <% end %>
-          </div>
-        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
