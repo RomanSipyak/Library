@@ -95,19 +95,19 @@
 </div>
 <!-- Modal -->
 <div class='container-fluid cards-row'>
-  <div class='row'>
+  <div class='row' >
     <% @books.each do |book| %>
       <div class='col-sm-6 col-md-4 article'>
-        <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;'>
+        <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;  max-height: 300px; overflow-y: auto'>
           <%= image_tag book.image_url, class: "img-responsive" if book.image_url %>
           <div class='caption'
-               <% if @free_units_count[book] > 0 %> style='border-radius: 7px;background-color: #28a745a6;'
+               <% if @free_units_count[book] > 0 %> style='border-radius: 7px;background-color: #28a745a6; max-height: 300px; overflow-y: auto;'
                <% else %>
-               style='border-radius: 7px;background-color: #da7916b8;'
+               style='border-radius: 7px;background-color: #da7916b8; max-height: 300px; overflow-y: auto'
                <% end %>
                >
             <h3>Tile Of Book:
-              <td><%= link_to book.title,for_user_book_path(book.id) %></td>
+              <td style='word-break: break-all;'><%= link_to book.title, for_user_book_path(book.id) %></td>
             </h3>
             <p class='card-description'>
               <strong>Author:  <%= book.author.name %></strong><br>
@@ -141,12 +141,12 @@
       </div>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+  <nav class="navbar  navbar-bottom ">
+    <div class="text-center">
       <% unless @books.empty? %>
         <%= paginate @books, outer_window: 3, class: "pagination" %>
       <% end %>
     </div>
-  </div>
+  </nav>
 </div>
 
