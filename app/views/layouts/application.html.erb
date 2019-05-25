@@ -28,7 +28,7 @@
       <ul class='nav navbar-nav'>
         <li><%= link_to 'Show All books', for_user_books_path %></li>
         <li><%= link_to 'Show All authors', for_user_authors_path %></li>
-        <% if user_signed_in?  %>
+        <% if user_signed_in? %>
           <li class='dropdown'>
             <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
               Your Orders
@@ -64,11 +64,11 @@
   <div class='container'>
     <div class='row'>
       <div class='col-md-3'>
-        <div class='well'><strong>Admin Panel</strong></div>
+        <div class='well' style='background-color: #daa364;'><strong>Admin Panel</strong></div>
         <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>
           <!-- 1 Panel start Here -->
-          <div class='panel panel-default'>
-            <div class='panel-heading' role='tab' id='headingOne'>
+          <div class='panel panel-default' style='background-color: #daa465;'>
+            <div class='panel-heading' style='background-color: #ecb77fe0;' role='tab' id='headingOne'>
               <h4 class='panel-title'>
                 <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseOne' aria-expanded='false' aria-controls='collapseOne' class='collapsed'>
                   Book <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
@@ -77,15 +77,15 @@
             </div>
             <div id='collapseOne' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingOne' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Add book', new_admin_book_path %></li>
-                <li><%= link_to 'Show all books', admin_books_path %></li>
+                <li><%= link_to 'Add book', new_admin_book_path, style: 'color: #090a0a;' %></li>
+                <li><%= link_to 'Show all books', admin_books_path, style: 'color: #090a0a;' %></li>
                 <!-- List Group End Here -->
               </div>
             </div>
           </div> <!-- 1 Panel End Here -->
           <!-- 2 Panel start Here -->
-          <div class='panel panel-default'>
-            <div class='panel-heading' role='tab' id='headingTwo'>
+          <div class='panel panel-default' style='background-color: #daa465;'>
+            <div class='panel-heading' style='background-color: #ecb77fe0;' role='tab' id='headingTwo'>
               <h4 class='panel-title'>
                 <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo' class='collapsed'>
                   Authors <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
@@ -94,15 +94,15 @@
             </div>
             <div id='collapseTwo' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingTwo' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Add author', new_admin_author_path %></li>
-                <li><%= link_to 'Show all authors', admin_authors_path %></li>
+                <li><%= link_to 'Add author', new_admin_author_path, style: 'color: #090a0a;' %></li>
+                <li><%= link_to 'Show all authors', admin_authors_path, style: 'color: #090a0a;' %></li>
                 <!-- List Group End Here -->
               </div>
             </div>
           </div> <!-- 2 Panel End Here -->
           <!-- 3 Panel start Here -->
-          <div class='panel panel-default'>
-            <div class='panel-heading' role='tab' id='headingThree'>
+          <div class='panel panel-default' style='background-color: #daa465;'>
+            <div class='panel-heading' style='background-color: #ecb77fe0;' role='tab' id='headingThree'>
               <h4 class='panel-title'>
                 <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseThree' aria-expanded='false' aria-controls='collapseThree'>
                   Users <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
@@ -111,7 +111,7 @@
             </div>
             <div id='collapseThree' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingThree' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Show all for_user', admin_users_path %></li>
+                <li><%= link_to 'Show all for_user', admin_users_path, style: 'color: #090a0a;' %></li>
 
                 <!-- List Group End Here -->
                 <!-- List Group End Here -->
@@ -119,8 +119,8 @@
             </div>
           </div>  <!-- 3 Panel End Here -->
           <!-- 4 Panel start Here -->
-          <div class='panel panel-default'>
-            <div class='panel-heading' role='tab' id='headingFour'>
+          <div class='panel panel-default' style='background-color: #daa465;'>
+            <div class='panel-heading' style='background-color: #ecb77fe0;' role='tab' id='headingFour'>
               <h4 class='panel-title'>
                 <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapseFour' aria-expanded='false' aria-controls='collapseFour'>
                   Orders <span class='glyphicon glyphicon-plus pull-right' aria-hidden='true'></span>
@@ -129,7 +129,7 @@
             </div>
             <div id='collapseFour' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingFour' aria-expanded='false' style='height: 0px;'>
               <div class='panel-body'>
-                <li><%= link_to 'Show all orders', admin_bookings_path %></li>
+                <li><%= link_to 'Show all orders', admin_bookings_path, style: 'color: #090a0a;' %></li>
                 <!-- List Group End Here -->
                 <!-- List Group End Here -->
               </div>
