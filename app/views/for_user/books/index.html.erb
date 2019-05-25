@@ -76,26 +76,23 @@
                                    style: 'width: 220px' %>
               </div>
             </div>
-            </div>
+        </div>
             <div class='col-md-6'>
               <%= label_tag(:year, 'Year of release') %><br>
               <%= select_tag :by_year, options_for_select(@years, nil) %>
-
               <div><%= submit_tag 'Save' %></div>
             </div>
-
           <% end %>
-
           <div class='modal-footer'>
             <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
           </div>
-          </div>
+      </div>
     </div>
   </div>
 </div>
 <!-- Modal -->
 <div class='container-fluid cards-row'>
-  <div class='row' >
+  <div class='row'>
     <% @books.each do |book| %>
       <div class='col-sm-6 col-md-4 article'>
         <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;  max-height: 300px; overflow-y: auto'>

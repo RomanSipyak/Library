@@ -14,39 +14,39 @@
       <div class='panel-body table-responsive'>
         <table class='table table-striped table-bordered table-list'>
           <thead>
-          <tr>
-            <th class='hidden-xs'>ID</th>
-            <th class='hidden-xs'>Copy ID</th>
-            <th>Start Booking</th>
-            <th>End Booking</th>
-            <th>Status</th>
-            <th>User Name</th>
-            <th>Book Name</th>
-            <th>Author book</th>
-          </tr>
+            <tr>
+              <th class='hidden-xs'>ID</th>
+              <th class='hidden-xs'>Copy ID</th>
+              <th>Start Booking</th>
+              <th>End Booking</th>
+              <th>Status</th>
+              <th>User Name</th>
+              <th>Book Name</th>
+              <th>Author book</th>
+            </tr>
           </thead>
           <tbody>
-          <% @bookings.each do |booking| %>
-            <tr>
-              <% if @books_booking[booking] %>
-                <td><%= link_to booking.id, for_user_book_path(@books_booking[booking]) %></td>
-                <td><%= link_to booking.unit_id, for_user_book_path(@books_booking[booking]) %></td>
-                <td><%= link_to booking.start_booking, for_user_book_path(@books_booking[booking]) %></td>
-                <td><%= link_to booking.end_booking, for_user_book_path(@books_booking[booking]) %></td>
-                <td><%= link_to booking.status, for_user_book_path(@books_booking[booking]) %></td>
+            <% @bookings.each do |booking| %>
+              <tr>
+                <% if @books_booking[booking] %>
+                  <td><%= link_to booking.id, for_user_book_path(@books_booking[booking]) %></td>
+                  <td><%= link_to booking.unit_id, for_user_book_path(@books_booking[booking]) %></td>
+                  <td><%= link_to booking.start_booking, for_user_book_path(@books_booking[booking]) %></td>
+                  <td><%= link_to booking.end_booking, for_user_book_path(@books_booking[booking]) %></td>
+                  <td><%= link_to booking.status, for_user_book_path(@books_booking[booking]) %></td>
 
-              <% else %>
-                <td><%= booking.id %></td>
-                <td><%= booking.unit_id %></td>
-                <td><%= booking.start_booking %></td>
-                <td><%= booking.end_booking %></td>
-                <td><%= booking.status %></td>
-              <% end %>
-              <td><%= booking.user.username %></td>
-              <td><%= booking.book_title %></td>
-              <td><%= booking.author_name %></td>
-            </tr>
-          <% end %>
+                <% else %>
+                  <td><%= booking.id %></td>
+                  <td><%= booking.unit_id %></td>
+                  <td><%= booking.start_booking %></td>
+                  <td><%= booking.end_booking %></td>
+                  <td><%= booking.status %></td>
+                <% end %>
+                <td><%= booking.user.username %></td>
+                <td><%= booking.book_title %></td>
+                <td><%= booking.author_name %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
         <div class="row">

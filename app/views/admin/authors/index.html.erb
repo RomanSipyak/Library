@@ -14,36 +14,34 @@
       <div class='panel-body'>
         <table class='table table-striped table-bordered table-list'>
           <thead>
-          <tr>
-            <h4><%= @status %></h4>
-          </tr>
-          <tr>
-            <th><em class='fa fa-cog'></em></th>
-            <th class='hidden-xs'>ID</th>
-            <th>Name</th>
-            <th>Biography</th>
-          </tr>
+            <tr>
+              <h4><%= @status %></h4>
+            </tr>
+            <tr>
+              <th><em class='fa fa-cog'></em></th>
+              <th class='hidden-xs'>ID</th>
+              <th>Name</th>
+              <th>Biography</th>
+            </tr>
           </thead>
           <tbody>
-          <% @authors.each do |author| %>
-            <tr>
-              <td align='center'>
-                <%= link_to new_admin_author_path(author_id: author.id), class: ' btn btn-default fa fa-pencil' do %>
-
-                <% end %>
-                <%= link_to admin_author_path(author), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-trash' do %>
-
-                <% end %>
-              </td>
-              <td class='hidden-xs'><%= author.id %></td>
-              <td><%= link_to author.name, admin_author_path(author.id) %></td>
-              <td><%= author.biography[0..30] + '...' %></td>
-            </tr>
-          <% end %>
+            <% @authors.each do |author| %>
+              <tr>
+                <td align='center'>
+                  <%= link_to new_admin_author_path(author_id: author.id), class: ' btn btn-default fa fa-pencil' do %>
+                  <% end %>
+                  <%= link_to admin_author_path(author), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-trash' do %>
+                  <% end %>
+                </td>
+                <td class='hidden-xs'><%= author.id %></td>
+                <td><%= link_to author.name, admin_author_path(author.id) %></td>
+                <td><%= author.biography[0..30] + '...' %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
         <div class="row">
-          <div class="col-md-4 col-md-offset-4">
+          <div class="col-md-6 col-md-offset-4">
             <% unless @authors.empty? %>
               <%= paginate @authors, outer_window: 3, class: "pagination" %>
             <% end %>

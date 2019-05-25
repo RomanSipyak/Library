@@ -1,7 +1,5 @@
 <div class='row'>
-  <div class='col-md-1'>
-  </div>
-  <div class='col-md-10'>
+  <div class='col-md-10 col-md-offset-1'>
     <% if @book.errors.any? %>
       <div class='error_explanation'>
         <h4><%= pluralize(@book.errors.count, 'error') %></h4>
@@ -13,7 +11,7 @@
       </div>
     <% end %>
     <h4><%= @status %></h4>
-    <%= form_for [:admin,@book] do |f| %>
+    <%= form_for [:admin, @book] do |f| %>
       <div class='form-group'>
         <div class='row'>
           <div class='col-md-6'>
@@ -47,11 +45,8 @@
             </div>
           </div>
         </div>
-
       </div>
       <%= f.submit 'Save', class: 'form-control' %>
     <% end %>
-  </div>
-  <div class='col-md-1'>
   </div>
 </div>

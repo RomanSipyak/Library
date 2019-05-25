@@ -29,19 +29,18 @@
       </div>
     <% end %>
     <h4><%= @status %></h4>
-    <%= form_for [:admin,@booking] do |f| %>
+    <%= form_for [:admin, @booking] do |f| %>
       <div class='form-group'>
         <div class='row'>
           <div class='col-md-6'>
-         <%= label_tag('Continue booking') %><br>
-            <%= number_field_tag 'continue_booking',0, in: 0..20 %>
-         </div>
+            <%= label_tag('Continue booking') %><br>
+            <%= number_field_tag 'continue_booking', 0, in: 0..20 %>
+          </div>
           <div class='col-md-6'>
             <%= label_tag(:status, 'Change a status') %><br>
             <%= f.select :status, Booking.statuses.keys.to_a %><br>
           </div>
         </div>
-
       </div>
       <%= f.submit 'Save', class: 'form-control' %>
     <% end %>
