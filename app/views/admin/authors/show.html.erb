@@ -53,12 +53,22 @@
               <tr>
                 <td><%= link_to book.title, for_user_book_path(book.id) %></td>
                 <td><%= link_to book.year, for_user_book_path(book.id) %></td>
-                <% if book.category %>
+                <% unless book.category.nil? || book.category.title.nil? %>
                   <td><%= link_to book.category.title, for_user_book_path(book.id) %></td>
+                <% else %>
+                  <td>Category: not exist</td><br>
                 <% end %>
-                <td><%= link_to book.author.name, for_user_book_path(book.id) %></td>
+                <% unless book.author.nil? || book.author.name.nil? %>
+                  <td><%= link_to book.author.name, for_user_book_path(book.id) %></td>
+                <% else %>
+                  <td>Author: not exist</td><br>
+                <% end %>
                 <td><%= book.rating %></td>
-                <td><%= book.description[0..30] + '...' %></td>
+                <% if book.description.length < 30 %>
+                  <td>Book:  <%= book.description[0..30] %></td><br>
+                <% else %>
+                  <td>Book:  <%= book.description[0..30] + '...' %></td><br>
+                <% end %>
               </tr>
             <% end %>
           </tbody>
