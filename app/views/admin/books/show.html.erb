@@ -16,10 +16,22 @@
             <ul>
               <li>Title:<%= @book.title %></li>
               <li>Year of release:<%= @book.year %></li>
-              <li>Author:<%= @book.author.name %></li>
+              <% unless @book.author.nil? || @book.author.name.nil? %>
+                <li>Author:<%= @book.author.name %></li>
+              <% else %>
+                <li>Author: not exist</li><br>
+              <% end %>
               <li>Rating:  <%= @book.rating %></li>
-              <li>Category:<%= @book.category.title %></li>
-              <li>Language:<%= @book.language.language %></li>
+              <% unless @book.category.nil? || @book.category.title.nil? %>
+                <li>Category:<%= @book.category.title %></li>
+              <% else %>
+                <li>Category: not exist</li><br>
+              <% end %>
+              <% unless @book.language.nil? || @book.language.language.nil? %>
+                <li>Language:<%= @book.language.language %></li>
+              <% else %>
+                <li>Language: not exist</li><br>
+              <% end %>
               <li>Count of copies:<%= @book.units_count %></li>
               <li>Count of free: ДОРОБИТИ</li>
               <li>Count of ordes: ДОРОБИТИ</li>
