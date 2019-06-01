@@ -8,12 +8,17 @@
               <%= image_tag author.image_url, class: "img-responsive" if author.image_url %>
             </div>
           </div>
+
           <div class='caption'>
             <h3>Author Name:
               <td><%= link_to author.name, for_user_author_path(author.id) %></td>
             </h3>
             <p class='card-description'>
+            <% if book.description.length < 15 %>
+              <strong>Author:  <%= author.biography %></strong><br>
+            <% else %>
               <strong>Author:  <%= author.biography[0..15] + '...' %></strong><br>
+            <% end %>
           </div>
         </div>
       </div>
