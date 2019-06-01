@@ -14,13 +14,17 @@
     <%= form_for [:admin, @author] do |f| %>
       <div class='form-group'>
         <label for='usr'>Author name</label>
-        <%= f.text_field :name, class: 'form-control' %><br>
+        <%= f.text_field :name, class: 'form-control', style: 'background-color: #44312e73' %><br>
         <label for='usr'>Author biography</label>
-        <%= f.text_area :biography, class: 'form-control' %><br>
+        <%= f.text_area :biography, class: 'form-control', style: 'background-color: #44312e73' %><br>
         <%= f.hidden_field :image, value: @author.cached_image_data %>
         <%= f.file_field :image %>
       </div>
-      <%= f.submit 'Save', class: 'form-control' %>
+      <%= f.submit 'Save', class: 'form-control', style: 'font-size: 18px;
+                                                          color: #040202ed;
+                                                          background-color: #5a3113cc;
+                                                          border: 0px solid #ccc;
+                                                          border-radius: 10px;' %>
     <% end %>
   </div>
 </div>
