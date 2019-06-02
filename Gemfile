@@ -30,6 +30,8 @@ gem 'rack-cors'
 gem 'knock'
 gem 'jwt'
 gem 'active_model_serializers'
+# S3 bucket for images
+gem "aws-sdk-s3", "~> 1.2"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

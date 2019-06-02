@@ -8,4 +8,8 @@ class BookSerializer < ActiveModel::Serializer
   def category
     author = object.category.title
   end
+
+  def image_data
+    image_data = object.image_url
+  end
 end
