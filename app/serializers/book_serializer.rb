@@ -1,5 +1,5 @@
 class BookSerializer < ActiveModel::Serializer
-  attributes :id, :units_count, :title, :year, :category, :author, :rating, :description, :image_data
+  attributes :id, :units_count, :title, :year, :category, :author, :rating, :description, :image_url
 
   def author
     author = object.author.name
@@ -9,7 +9,7 @@ class BookSerializer < ActiveModel::Serializer
     author = object.category.title
   end
 
-  def image_data
-    image_data = object.image_url
+  def image_url
+    object.image_url
   end
 end
