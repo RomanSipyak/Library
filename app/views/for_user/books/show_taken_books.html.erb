@@ -17,14 +17,22 @@
         <table class='table table-striped table-bordered table-list'>
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Year of release</th>
-              <th>Catecory</th>
-              <th>Author</th>
-              <th>Description</th>
-              <th>Start oreder this book:</th>
-              <th>End oreder this book:</th>
-              <th>before the end of the order days:</th>
+<!--              <th>Title</th>-->
+<!--              <th>Year of release</th>-->
+<!--              <th>Catecory</th>-->
+<!--              <th>Author</th>-->
+<!--              <th>Description</th>-->
+<!--              <th>Start oreder this book:</th>-->
+<!--              <th>End oreder this book:</th>-->
+<!--              <th>before the end of the order days:</th>-->
+              <th>Назва</th>
+              <th>Рік випуску</th>
+              <th>Категорія</th>
+              <th>Автор</th>
+              <th>Опис</th>
+              <th>Початок замовлення цієї книги:</th>
+              <th>Кінець замовлення цієї книги:</th>
+              <th>До кінця замовлення залишилося:</th>
             </tr>
           </thead>
           <tbody>
@@ -36,12 +44,14 @@
                 <% unless book.category.nil? || book.category.title.nil? %>
                   <td><%= link_to book.category.title, for_user_book_path(book.id) %></td>
                 <% else %>
-                  <td>Category: not exist</td><br>
+<!--                  <td>Category: not exist</td><br>-->
+                  <td>Категорії: не існує</td><br>
                 <% end %>
                 <% unless book.author.nil? || book.author.name.nil? %>
                   <td><%= link_to book.author.name, for_user_book_path(book.id) %></td>
                 <% else %>
-                  <td>Author: not exist</td><br>
+<!--                  <td>Author: not exist</td><br>-->
+                  <td>Автор: не існує</td><br>
                 <% end %>
                 <% if book.description.length < 30 %>
                   <td><%= link_to book.description, for_user_book_path(book.id) %></td>
@@ -50,7 +60,7 @@
                 <% end %>
                 <td><%= @books_booking[book].start_booking %></td>
                 <td><%= @books_booking[book].end_booking %></td>
-                <td><%= ((@books_booking[book].end_booking - DateTime.current) / 86400).to_i %> days</td>
+                <td><%= ((@books_booking[book].end_booking - DateTime.current) / 86400).to_i %> днів</td>
               </tr>
             <% end %>
           </tbody>

@@ -1,7 +1,7 @@
 <div class='row' style='margin-bottom: 12px '>
   <div class='col col-md-3 '>
     <button type='button' class='btn btn-info btn-ms' data-toggle='modal' data-target='#myModal'>
-      Filter
+      Фільтр
     </button>
   </div>
 </div>
@@ -13,7 +13,7 @@
       <div class='modal-content'>
         <div class='modal-header'>
           <button type='button' class='close' data-dismiss='modal'>&times;</button>
-          <h4 class='modal-title'>Filter for books</h4>
+          <h4 class='modal-title'>Фільтр для книг</h4>
         </div>
         <div class='modal-body'>
           <%= form_tag for_user_books_path, method: :get do %>
@@ -21,7 +21,8 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-                    <a data-toggle='collapse' href='#collapse1'>Languages</a>
+<!--                    <a data-toggle='collapse' href='#collapse1'>Languages</a>-->
+                    <a data-toggle='collapse' href='#collapse1'>Мови</a>
                   </h4>
                 </div>
                 <div id='collapse1' class='panel-collapse collapse'>
@@ -38,7 +39,8 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-                    <a data-toggle='collapse' href='#collapse2'>Authors</a>
+<!--                    <a data-toggle='collapse' href='#collapse2'>Authors</a>-->
+                    <a data-toggle='collapse' href='#collapse2'>Автори</a>
                   </h4>
                 </div>
                 <div id='collapse2' class='panel-collapse collapse'>
@@ -55,7 +57,8 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-                    <a data-toggle='collapse' href='#collapse3'>Categories</a>
+<!--                    <a data-toggle='collapse' href='#collapse3'>Categories</a>-->
+                    <a data-toggle='collapse' href='#collapse3'>Категорії</a>
                   </h4>
                 </div>
                 <div id='collapse3' class='panel-collapse collapse'>
@@ -71,20 +74,22 @@
             <div class='row'>
               <div class='col-md-12'>
                 <%= text_field_tag 'by_title_or_name_fo_author', params[:by_title_or_name_fo_author],
-                                   placeholder: 'code\name_title\name_author',
+                                   # placeholder: 'code\name_title\name_author'
+                                   placeholder: 'код\назва книги\ім\'я автора',
                                    class: 'form-control col-md-6',
                                    style: 'width: 220px' %>
               </div>
             </div>
         </div>
             <div class='col-md-6'>
-              <%= label_tag(:year, 'Year of release') %><br>
+<!--              <%#= label_tag(:year, 'Year of release') %><br>-->
+              <%= label_tag(:year, 'Рік випуску') %><br>
               <%= select_tag :by_year, options_for_select(@years, nil) %>
-              <div><%= submit_tag 'Save' %></div>
+              <div><%= submit_tag 'Зберегти' %></div>
             </div>
           <% end %>
           <div class='modal-footer'>
-            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+            <button type='button' class='btn btn-default' data-dismiss='modal'>Закрити</button>
           </div>
       </div>
     </div>
@@ -108,35 +113,46 @@
             </h3>
             <p class='card-description'>
             <% unless book.author.nil? || book.author.name.nil? %>
-                <strong>Author:  <%= book.author.name %></strong><br>
+<!--                <strong>Author:  <%#= book.author.name %></strong><br>-->
+                <strong>Автор:  <%= book.author.name %></strong><br>
             <% else %>
-                <strong>Author: not exist</strong><br>
+<!--                <strong>Author: not exist</strong><br>-->
+                <strong>Автор: не існує</strong><br>
             <% end %>
             <% unless book.language.nil? || book.language.language.nil? %>
-                <strong>Language:  <%= book.language.language %></strong><br>
+<!--                <strong>Language:  <%#= book.language.language %></strong><br>-->
+                <strong>Мова:  <%= book.language.language %></strong><br>
             <% else %>
-                <strong>Language: not exist</strong><br>
+<!--                <strong>Language: not exist</strong><br>-->
+                <strong>Мова: не існує</strong><br>
             <% end %>
-              <strong>Rating:  <%= book.rating %></strong><br>
-              <strong>Count of Free:</strong> <%= @free_units_count[book] %>\<%= book.units_count %></p>
+<!--              <strong>Rating:  <%#= book.rating %></strong><br>-->
+<!--              <strong>Count of Free:</strong> <%#= @free_units_count[book] %>\<%#= book.units_count %></p>-->
+              <strong>Рейтинг:  <%= book.rating %></strong><br>
+              <strong>Кількість вільних екземплярів:</strong> <%= @free_units_count[book] %>\<%= book.units_count %></p>
             <% unless current_user %>
-              <p>If you want do order you should to autorize</p>
+<!--              <p>If you want do order you should to autorize</p>-->
+              <p>Якщо ви хочете замовити книгу вам потрібно авторизуватись</p>
             <% else %>
               <% if @free_units_count[book] > 0 %>
                 <% if current_user.bookings.by_status(:taken).count < 4 %>
                   <% if current_user.bookings.by_status(:owed).count == 0 %>
                     <%= form_with url: for_user_bookings_path do |form| %>
                       <%= hidden_field_tag(:book_id, book.id) %>
-                      <%= form.submit 'Do order', class: 'btn btn-success fa fa-check fa-1' %>
+                      <%#= form.submit 'Do order', class: 'btn btn-success fa fa-check fa-1' %>
+                      <%= form.submit 'Зробити замовлення', class: 'btn btn-success fa fa-check fa-1' %>
                     <% end %>
                   <% else %>
-                    <p>You are debtor</p>
+<!--                    <p>You are debtor</p>-->
+                    <p>Ви боржник</p>
                   <% end %>
                 <% else %>
-                  <p>You have too much bookings</p>
+<!--                  <p>You have too much bookings</p>-->
+                  <p>У вас за багато замовлень</p>
                 <% end %>
               <% else %>
-                <p>Not have free books</p>
+<!--                <p>Not have free books</p>-->
+                <p>Не має вільних екземплярів книги</p>
               <% end %>
             <% end %>
           </div>

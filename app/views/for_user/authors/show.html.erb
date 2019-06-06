@@ -13,8 +13,11 @@
         </div>
         <div class="row">
           <div class='col-md-12 '>
+<!--            <p style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: groove; border-width: 4px;'>-->
+<!--              Author Name:<%#= @author.name %>-->
+<!--            </p>-->
             <p style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: groove; border-width: 4px;'>
-              Author Name:<%= @author.name %>
+              Ім'я автора: <%= @author.name %>
             </p>
           </div>
         </div>
@@ -34,8 +37,11 @@
             <div class='row'>
               <div class='col col-md-6 col-md-offset-3'>
                 <div style='text-align: center'>
-                  <strong>
+<!--                  <strong>
                     All author's books in this library
+                  </strong>-->
+                  <strong>
+                    Книги автора у бібліотеці
                   </strong>
                 </div>
               </div>
@@ -46,12 +52,18 @@
             <table class='table table-striped table-bordered table-hover table-list'>
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Year of release</th>
-                  <th>Category</th>
-                  <th>Author</th>
-                  <th>Rating:</th>
-                  <th>Description</th>
+<!--                  <th>Title</th>-->
+<!--                  <th>Year of release</th>-->
+<!--                  <th>Category</th>-->
+<!--                  <th>Author</th>-->
+<!--                  <th>Rating:</th>-->
+<!--                  <th>Description</th>-->
+                  <th>Назва</th>
+                  <th>Рік випуску</th>
+                  <th>Категорія</th>
+                  <th>Автор</th>
+                  <th>Рейтинг:</th>
+                  <th>Опис</th>
                 </tr>
               </thead>
               <tbody>
@@ -62,12 +74,14 @@
                     <% unless book.category.nil? || book.category.title.nil? %>
                       <td><%= link_to book.category.title, for_user_book_path(book.id) %></td>
                     <% else %>
-                      <td>Category: not exist</td><br>
+<!--                      <td>Category: not exist</td><br>-->
+                      <td>Категорія: не існує</td><br>
                     <% end %>
                     <% unless book.author.nil? || book.author.name.nil? %>
                       <td><%= link_to book.author.name, for_user_book_path(book.id) %></td>
                     <% else %>
-                      <td>Author: not exist</td><br>
+<!--                      <td>Author: not exist</td><br>-->
+                      <td>Автор: не існує</td><br>
                     <% end %>
                     <td><%= book.rating %></td>
                     <% if book.description.length < 30 %>

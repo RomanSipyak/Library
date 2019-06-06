@@ -10,28 +10,41 @@
         <div class='row desc card'>
           <div class='col-md-12'>
             <ul>
-              <li>Title:<%= @book.title %></li>
-              <li>Year of release:<%= @book.year %></li>
+<!--              <li>Title:<%#= @book.title %></li>-->
+<!--              <li>Year of release:<%#= @book.year %></li>-->
+              <li>Назва:<%= @book.title %></li>
+              <li>Рік випуску:<%= @book.year %></li>
               <% unless @book.author.nil? || @book.author.name.nil? %>
-                <li>Author:<%= @book.author.name %></li>
+<!--                <li>Author:<%#= @book.author.name %></li>-->
+                <li>Автор:<%= @book.author.name %></li>
               <% else %>
-                <li>Author: not exist</li><br>
+<!--                <li>Author: not exist</li><br>-->
+                <li>Автор: не існує</li><br>
               <% end %>
               <% unless @book.category.nil? || @book.category.title.nil? %>
-                <li>Category:<%= @book.category.title %></li>
+<!--                <li>Category:<%#= @book.category.title %></li>-->
+                <li>Категорія:<%= @book.category.title %></li>
               <% else %>
-                <li>Category: not exist</li><br>
+<!--                <li>Category: not exist</li><br>-->
+                <li>Категорія: не існує</li><br>
               <% end %>
               <% unless @book.language.nil? || @book.language.language.nil? %>
-                <li>Language:<%= @book.language.language %></li>
+<!--                <li>Language:<%#= @book.language.language %></li>-->
+                <li>Мова:<%= @book.language.language %></li>
               <% else %>
-                <li>Language: not exist</li><br>
+<!--                <li>Language: not exist</li><br>-->
+                <li>Мова: не існує</li><br>
               <% end %>
-              <li>Count of copies:<%= @book.units_count %></li>
-              <li>Count of free:<%= @free_units_count[@book] %></li>
-              <li>Rating:  <%= @book.rating %></li>
-              <li>Count of ordes:<%= @book.units_count - @free_units_count[@book] %></li>
-              <li>Before this book be able days:<%= @day_whan_this_book_by_able %></li>
+<!--              <li>Count of copies:<%#= @book.units_count %></li>-->
+<!--              <li>Count of free:<%#= @free_units_count[@book] %></li>-->
+<!--              <li>Rating:  <%#= @book.rating %></li>-->
+<!--              <li>Count of ordes:<%#= @book.units_count - @free_units_count[@book] %></li>-->
+<!--              <li>Before this book be able days:<%#= @day_whan_this_book_by_able %></li>-->
+              <li>Кількість копій:<%= @book.units_count %></li>
+              <li>Кількість вільних екземплярів:<%= @free_units_count[@book] %></li>
+              <li>Рейтинг:  <%= @book.rating %></li>
+              <li>Кількість замовлених екземплятів:<%= @book.units_count - @free_units_count[@book] %></li>
+              <li>Ймовірно книга буде доступна через:<%= @day_whan_this_book_by_able %> днів</li>
               <!--              TODO виправити це-->
               <% if user_signed_in? && current_user.admin %>
                 <li>
