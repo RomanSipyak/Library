@@ -7,7 +7,7 @@
           <%= form_tag admin_users_path, method: :get do %>
             <div class='row'>
               <div class='col-md-2' style='margin: 7px '>
-                <%= select_tag :by_debtor, options_for_select([['Debtor', true], ['Not debtor', false], ['No filtre', nil]], nil) %>
+                <%= select_tag :by_debtor, options_for_select([['Debtor', true], ['Not debtor', false], ['No filtre', ""]], '') %>
               </div>
               <div class='col-md-3'>
                 <div><%= submit_tag 'Пошук', class: 'btn btn-ms btn-success ', style: 'margin-left: 5px;' %></div>

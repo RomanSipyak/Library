@@ -6,7 +6,7 @@ module Admin
       @languages = Language.all
       @categories = Category.all
       @authors = Author.all
-      @years = Array.new(Time.now.year - 999) {|index| [(index + 1000).to_s, index + 1000]} << ['No filtre', nil]
+      @years = Array.new(Time.now.year - 999) {|index| [(index + 1000).to_s, index + 1000]} << ['No filtre', '']
       @books = Book.filter(params.slice(:by_language_ids, :by_authors_ids, :by_category_ids, :by_year, :by_title_or_name_for_author))
                    .page params[:page]
       render 'admin/books/index', :locals => {:fbookupload => "yes"}

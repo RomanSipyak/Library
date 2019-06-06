@@ -21,7 +21,7 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-<!--                    <a data-toggle='collapse' href='#collapse1'>Languages</a>-->
+                    <!--                    <a data-toggle='collapse' href='#collapse1'>Languages</a>-->
                     <a data-toggle='collapse' href='#collapse1'>Мови</a>
                   </h4>
                 </div>
@@ -39,7 +39,7 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-<!--                    <a data-toggle='collapse' href='#collapse2'>Authors</a>-->
+                    <!--                    <a data-toggle='collapse' href='#collapse2'>Authors</a>-->
                     <a data-toggle='collapse' href='#collapse2'>Автори</a>
                   </h4>
                 </div>
@@ -57,7 +57,7 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-<!--                    <a data-toggle='collapse' href='#collapse3'>Categories</a>-->
+                    <!--                    <a data-toggle='collapse' href='#collapse3'>Categories</a>-->
                     <a data-toggle='collapse' href='#collapse3'>Категорії</a>
                   </h4>
                 </div>
@@ -72,25 +72,26 @@
               </div>
             </div>
             <div class='row'>
-              <div class='col-md-12'>
-                <%= text_field_tag 'by_title_or_name_fo_author', params[:by_title_or_name_fo_author],
+              <div class='col-md-12' style="padding-bottom: 5px">
+                <%= text_field_tag 'by_title_or_name_for_author', params[:by_title_or_name_for_author],
                                    # placeholder: 'code\name_title\name_author'
-                                   placeholder: 'код\назва книги\ім\'я автора',
+                                   placeholder: 'назва книги\ім\'я автора',
                                    class: 'form-control col-md-6',
                                    style: 'width: 220px' %>
               </div>
             </div>
-        </div>
             <div class='col-md-6'>
-<!--              <%#= label_tag(:year, 'Year of release') %><br>-->
+              <!--              <%#= label_tag(:year, 'Year of release') %><br>-->
               <%= label_tag(:year, 'Рік випуску') %><br>
-              <%= select_tag :by_year, options_for_select(@years, nil) %>
+              <%= select_tag :by_year, options_for_select(@years, @years.last[1]) %>
+              <!--              <div><%#= submit_tag 'Save' %></div>-->
               <div><%= submit_tag 'Зберегти' %></div>
             </div>
           <% end %>
           <div class='modal-footer'>
             <button type='button' class='btn btn-default' data-dismiss='modal'>Закрити</button>
           </div>
+        </div>
       </div>
     </div>
   </div>
@@ -103,35 +104,42 @@
         <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;  max-height: 300px; overflow-y: auto'>
           <%= image_tag book.image_url, class: "img-responsive" if book.image_url %>
           <div class='caption'
-               <% if @free_units_count[book] > 0 %> style='border-radius: 7px;background-color: #28a745a6; max-height: 300px; overflow-y: auto;'
+               <% if @free_units_count[book] > 0 %> style='border-radius: 7px;background-color: #28a745a6'
                <% else %>
-               style='border-radius: 7px;background-color: #da7916b8; max-height: 300px; overflow-y: auto'
+               style='border-radius: 7px;background-color: #da7916b8'
                <% end %>
                >
             <h3>Tile Of Book:
               <td style='word-break: break-all;'><%= link_to book.title, for_user_book_path(book.id) %></td>
             </h3>
             <p class='card-description'>
-            <% unless book.author.nil? || book.author.name.nil? %>
-<!--                <strong>Author:  <%#= book.author.name %></strong><br>-->
+              <strong>Рік випуску:<%= book.year %></strong><br>
+              <% unless book.author.nil? || book.author.name.nil? %>
+                <!--                <strong>Author:  <%#= book.author.name %></strong><br>-->
                 <strong>Автор:  <%= book.author.name %></strong><br>
-            <% else %>
-<!--                <strong>Author: not exist</strong><br>-->
+              <% else %>
+                <!--                <strong>Author: not exist</strong><br>-->
                 <strong>Автор: не існує</strong><br>
-            <% end %>
-            <% unless book.language.nil? || book.language.language.nil? %>
-<!--                <strong>Language:  <%#= book.language.language %></strong><br>-->
+              <% end %>
+              <% unless book.language.nil? || book.language.language.nil? %>
+                <!--                <strong>Language:  <%#= book.language.language %></strong><br>-->
                 <strong>Мова:  <%= book.language.language %></strong><br>
-            <% else %>
-<!--                <strong>Language: not exist</strong><br>-->
+              <% else %>
+                <!--                <strong>Language: not exist</strong><br>-->
                 <strong>Мова: не існує</strong><br>
-            <% end %>
-<!--              <strong>Rating:  <%#= book.rating %></strong><br>-->
-<!--              <strong>Count of Free:</strong> <%#= @free_units_count[book] %>\<%#= book.units_count %></p>-->
+              <% end %>
+              <% unless book.category.nil? || book.category.title.nil? %>
+                <strong>Категорія:  <%= book.category.title %></strong><br>
+              <% else %>
+                <strong>Категорія: не існує</strong><br>
+              <% end %>
+
+              <!--              <strong>Rating:  <%#= book.rating %></strong><br>-->
+              <!--              <strong>Count of Free:</strong> <%#= @free_units_count[book] %>\<%#= book.units_count %></p>-->
               <strong>Рейтинг:  <%= book.rating %></strong><br>
-              <strong>Кількість вільних екземплярів:</strong> <%= @free_units_count[book] %>\<%= book.units_count %></p>
-            <% unless current_user %>
-<!--              <p>If you want do order you should to autorize</p>-->
+              <strong>Кількість вільних екземплярів:</strong> <%= @free_units_count[book] %>\<%= book.units_count %>
+              <% unless current_user %>
+                <!--              <p>If you want do order you should to autorize</p>-->
               <p>Якщо ви хочете замовити книгу вам потрібно авторизуватись</p>
             <% else %>
               <% if @free_units_count[book] > 0 %>
@@ -143,15 +151,15 @@
                       <%= form.submit 'Зробити замовлення', class: 'btn btn-success fa fa-check fa-1' %>
                     <% end %>
                   <% else %>
-<!--                    <p>You are debtor</p>-->
+                    <!--                    <p>You are debtor</p>-->
                     <p>Ви боржник</p>
                   <% end %>
                 <% else %>
-<!--                  <p>You have too much bookings</p>-->
+                  <!--                  <p>You have too much bookings</p>-->
                   <p>У вас за багато замовлень</p>
                 <% end %>
               <% else %>
-<!--                <p>Not have free books</p>-->
+                <!--                <p>Not have free books</p>-->
                 <p>Не має вільних екземплярів книги</p>
               <% end %>
             <% end %>
