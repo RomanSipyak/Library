@@ -11,7 +11,8 @@
                 <div class='row' >
                   <div class='col-md-12'>
                     <%= text_field_tag 'by_book_title_or_author_name_or_code', params[:by_book_title_or_author_name_or_code],
-                                       placeholder: 'code\name_title\name_author',
+                                       # placeholder: 'code\name_title\name_author'
+                                       placeholder: 'код\назва книги\ім\'я автора',
                                        class: 'form-control col-md-6',
                                        style: 'width: 220px' %>
                   </div>
@@ -21,7 +22,8 @@
                     <%= select_tag :by_status, options_for_select(Booking.statuses.map {|k, v| [k.humanize.capitalize, v]}) %>
                   </div>
                   <div class='col-md-9'>
-                    <div><%= submit_tag 'Search', class: 'btn btn-ms btn-success ', style: 'margin-left: 5px;' %></div>
+<!--                    <div><%#= submit_tag 'Search', class: 'btn btn-ms btn-success ', style: 'margin-left: 5px;' %></div>-->
+                    <div><%= submit_tag 'Пошук', class: 'btn btn-ms btn-success ', style: 'margin-left: 5px;' %></div>
                   </div>
                 </div>
                 <%#= form.submit 'Search', class: 'btn btn-ms btn-success ', style: 'margin-left: 5px;' %>
@@ -29,7 +31,8 @@
             </div>
           </div>
           <div class='col col-xs-3 offset-xs-6 '>
-            <%= link_to 'Update Booking Statuses', admin_update_bookings_statuses_path, method: :post, class: 'btn btn-sm btn-primary' %>
+            <%#= link_to 'Update Booking Statuses', admin_update_bookings_statuses_path, method: :post, class: 'btn btn-sm btn-primary' %>
+            <%= link_to 'Оновити статуси замовлень', admin_update_bookings_statuses_path, method: :post, class: 'btn btn-sm btn-primary' %>
           </div>
         </div>
       </div>
@@ -40,16 +43,26 @@
               <h1><%= @status %></h1>
             </tr>
             <tr>
+<!--              <th><em class='fa fa-cog'></em></th>-->
+<!--              <th class='hidden-xs'>ID</th>-->
+<!--              <th class='hidden-xs'>Copy ID</th>-->
+<!--              <th>Start Booking</th>-->
+<!--              <th>End Booking</th>-->
+<!--              <th>Status</th>-->
+<!--              <th>Code</th>-->
+<!--              <th>User Name</th>-->
+<!--              <th>Book Name</th>-->
+<!--              <th>Author book</th>-->
               <th><em class='fa fa-cog'></em></th>
               <th class='hidden-xs'>ID</th>
-              <th class='hidden-xs'>Copy ID</th>
-              <th>Start Booking</th>
-              <th>End Booking</th>
-              <th>Status</th>
-              <th>Code</th>
-              <th>User Name</th>
-              <th>Book Name</th>
-              <th>Author book</th>
+              <th class='hidden-xs'>Копія ID</th>
+              <th>Покаток замовлення</th>
+              <th>Кінець замовлення</th>
+              <th>Статус замовлення</th>
+              <th>Код</th>
+              <th>Ім'я замовника</th>
+              <th>Назва книги</th>
+              <th>Ім'я автора</th>
             </tr>
           </thead>
           <tbody>
@@ -64,12 +77,14 @@
                   <%= form_with url: admin_update_booking_status_path do |form| %>
                     <%= hidden_field_tag(:booking_id, booking.id) %>
                     <%= hidden_field_tag(:status, :taken) %>
-                    <%= form.submit 'Change Taken', class: ' btn btn-sm btn-info ' %>
+                    <%#= form.submit 'Change Taken', class: ' btn btn-sm btn-info ' %>
+                    <%= form.submit 'Змінити на взято', class: ' btn btn-sm btn-info ' %>
                   <% end %>
                   <%= form_with url: admin_update_booking_status_path do |form| %>
                     <%= hidden_field_tag(:booking_id, booking.id) %>
                     <%= hidden_field_tag(:status, :returned) %>
-                    <%= form.submit 'Change Returned', class: 'btn btn-xs btn-success ' %>
+                    <%#= form.submit 'Change Returned', class: 'btn btn-xs btn-success ' %>
+                    <%= form.submit 'Змінити на повернено', class: 'btn btn-xs btn-success ' %>
                   <% end %>
                   <%# end %>
                   <%#= link_to update_bookings_status_on_returned_path(booking_id: booking.id), method: :post, class: ' btn btn-success fa fa-check-square ' do %>

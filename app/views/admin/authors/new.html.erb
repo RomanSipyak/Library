@@ -13,14 +13,16 @@
     <h4><%= @status %></h4>
     <%= form_for [:admin, @author] do |f| %>
       <div class='form-group'>
-        <label for='usr'>Author name</label>
+<!--        <label for='usr'>Author name</label>-->
+        <label for='usr'>Ім'я автора</label>
         <%= f.text_field :name, class: 'form-control', style: 'background-color: #44312e73' %><br>
-        <label for='usr'>Author biography</label>
+<!--        <label for='usr'>Author biography</label>-->
+        <label for='usr'>Біографія автора</label>
         <%= f.text_area :biography, class: 'form-control', style: 'background-color: #44312e73' %><br>
         <%= f.hidden_field :image, value: @author.cached_image_data %>
         <%= f.file_field :image %>
       </div>
-      <%= f.submit 'Save', class: 'form-control', style: 'font-size: 18px;
+      <%= f.submit 'Зберегти', class: 'form-control', style: 'font-size: 18px;
                                                           color: #040202ed;
                                                           background-color: #5a3113cc;
                                                           border: 0px solid #ccc;

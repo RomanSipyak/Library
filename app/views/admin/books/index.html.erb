@@ -7,7 +7,8 @@
       <div class='modal-content'>
         <div class='modal-header'>
           <button type='button' class='close' data-dismiss='modal'>&times;</button>
-          <h4 class='modal-title'>Filter for books</h4>
+<!--          <h4 class='modal-title'>Filter for books</h4>-->
+          <h4 class='modal-title'>Фільтер для книг</h4>
         </div>
         <div class='modal-body'>
           <%= form_tag admin_books_path, method: :get do %>
@@ -15,12 +16,14 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-                    <a data-toggle='collapse' href='#collapse1'>Languages</a>
+<!--                    <a data-toggle='collapse' href='#collapse1'>Languages</a>-->
+                    <a data-toggle='collapse' href='#collapse1'>Мови</a>
                   </h4>
                 </div>
                 <div id='collapse1' class='panel-collapse collapse'>
                   <div class='panel-body'>
                     <% @languages.each do |language| %>
+                       <%#= check_box_tag 'by_language_ids[]', language.id , params[:by_language_ids] %>
                       <%= check_box_tag 'by_language_ids[]', language.id %>
                       <%= h language.language %>;
                     <% end %>
@@ -32,7 +35,8 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-                    <a data-toggle='collapse' href='#collapse2'>Authors</a>
+<!--                    <a data-toggle='collapse' href='#collapse2'>Authors</a>-->
+                    <a data-toggle='collapse' href='#collapse2'>Автори</a>
                   </h4>
                 </div>
                 <div id='collapse2' class='panel-collapse collapse'>
@@ -49,7 +53,8 @@
               <div class='panel panel-default'>
                 <div class='panel-heading'>
                   <h4 class='panel-title'>
-                    <a data-toggle='collapse' href='#collapse3'>Categories</a>
+<!--                    <a data-toggle='collapse' href='#collapse3'>Categories</a>-->
+                    <a data-toggle='collapse' href='#collapse3'>Категорії</a>
                   </h4>
                 </div>
                 <div id='collapse3' class='panel-collapse collapse'>
@@ -68,20 +73,24 @@
             <div class='row'>
               <div class='col-md-12'>
                 <%= text_field_tag 'by_title_or_name_fo_author', params[:by_title_or_name_for_author],
-                                   placeholder: 'code\name_title\name_author',
+                                   # placeholder: 'code\name_title\name_author'
+                                   placeholder: 'код\назва книги\ім\'я автора',
                                    class: 'form-control col-md-6',
                                    style: 'width: 220px' %>
               </div>
             </div>
             <div class='col-md-6'>
-              <%= label_tag(:year, 'Year of release') %><br>
+<!--              <%#= label_tag(:year, 'Year of release') %><br>-->
+              <%= label_tag(:year, 'Рік випуску') %><br>
               <%= select_tag :by_year, options_for_select(@years, nil) %>
-              <div><%= submit_tag 'Save' %></div>
+<!--              <div><%#= submit_tag 'Save' %></div>-->
+              <div><%= submit_tag 'Зберегти' %></div>
             </div>
           <% end %>
         </div>
         <div class='modal-footer'>
-          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+<!--          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>-->
+          <button type='button' class='btn btn-default' data-dismiss='modal'>Закрити</button>
         </div>
       </div>
     </div>
@@ -96,7 +105,8 @@
         <div class='row'>
           <div class='col col-md-3 col-md-offset-1'>
             <button type='button' class='btn btn-info btn-ms' data-toggle='modal' data-target='#myModal'>
-              Filter
+<!--              Filter-->
+              Фільтер
             </button>
           </div>
           <div class='col col-md-5 '>
@@ -105,7 +115,8 @@
             <% end %>
           </div>
           <div class='col col-md-3 '>
-            <%= link_to 'Create book', new_admin_book_path, class: 'btn btn-sm btn-primary' %>
+            <%#= link_to 'Create book', new_admin_book_path, class: 'btn btn-sm btn-primary' %>
+            <%= link_to 'Створити книгу', new_admin_book_path, class: 'btn btn-sm btn-primary' %>
           </div>
         </div>
       </div>
@@ -116,15 +127,24 @@
               <h1><%= @status %></h1>
             </tr>
             <tr>
+<!--              <th><em class='fa fa-cog'></em></th>-->
+<!--              <th class='hidden-xs'>ID</th>-->
+<!--              <th class='hidden-xs'>Copies</th>-->
+<!--              <th>Title</th>-->
+<!--              <th>Year of release</th>-->
+<!--              <th>Category</th>-->
+<!--              <th>Author</th>-->
+<!--              <th>Rating:</th>-->
+<!--              <th>Description</th>-->
               <th><em class='fa fa-cog'></em></th>
               <th class='hidden-xs'>ID</th>
-              <th class='hidden-xs'>Copies</th>
-              <th>Title</th>
-              <th>Year of release</th>
-              <th>Category</th>
-              <th>Author</th>
-              <th>Rating:</th>
-              <th>Description</th>
+              <th class='hidden-xs'>Копії ID</th>
+              <th>Назва</th>
+              <th>Рік випуску</th>
+              <th>Категорія</th>
+              <th>Автор</th>
+              <th>Рейтинг:</th>
+              <th>Опис</th>
             </tr>
           </thead>
           <tbody>

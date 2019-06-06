@@ -14,27 +14,39 @@
         <div class='row '>
           <div class='col-md-12  desc card'>
             <ul>
-              <li>Title:<%= @book.title %></li>
-              <li>Year of release:<%= @book.year %></li>
+<!--              <li>Title:<%#= @book.title %></li>-->
+<!--              <li>Year of release:<%#= @book.year %></li>-->
+              <li>Назва:<%= @book.title %></li>
+              <li>Рік випуску:<%= @book.year %></li>
               <% unless @book.author.nil? || @book.author.name.nil? %>
-                <li>Author:<%= @book.author.name %></li>
+<!--                <li>Author:<%#= @book.author.name %></li>-->
+                <li>Автор:<%= @book.author.name %></li>
               <% else %>
-                <li>Author: not exist</li><br>
+<!--                <li>Author: not exist</li><br>-->
+                <li>Автор: не існує</li><br>
               <% end %>
-              <li>Rating:  <%= @book.rating %></li>
+<!--              <li>Rating:  <%#= @book.rating %></li>-->
+              <li>Рейтинг:  <%= @book.rating %></li>
               <% unless @book.category.nil? || @book.category.title.nil? %>
-                <li>Category:<%= @book.category.title %></li>
+<!--                <li>Category:<%#= @book.category.title %></li>-->
+                <li>Категорія:<%= @book.category.title %></li>
               <% else %>
-                <li>Category: not exist</li><br>
+<!--                <li>Category: not exist</li><br>-->
+                <li>Категоря: не існує</li><br>
               <% end %>
               <% unless @book.language.nil? || @book.language.language.nil? %>
-                <li>Language:<%= @book.language.language %></li>
+<!--                <li>Language:<%#= @book.language.language %></li>-->
+                <li>Мова:<%= @book.language.language %></li>
               <% else %>
-                <li>Language: not exist</li><br>
+<!--                <li>Language: not exist</li><br>-->
+                <li>Мова: не існує</li><br>
               <% end %>
-              <li>Count of copies:<%= @book.units_count %></li>
-              <li>Count of free: ДОРОБИТИ</li>
-              <li>Count of ordes: ДОРОБИТИ</li>
+<!--              <li>Count of copies:<%#= @book.units_count %></li>-->
+<!--              <li>Count of free: ДОРОБИТИ</li>-->
+<!--              <li>Count of ordes: ДОРОБИТИ</li>-->
+              <li>Кількість копій :<%= @book.units_count %></li>
+              <li>Кількість вільних: ДОРОБИТИ</li>
+              <li>Кількість зайнятих: ДОРОБИТИ</li>
             </ul>
           </div>
         </div>
@@ -54,8 +66,11 @@
         <div class='row'>
           <div class='col col-md-6 col-md-offset-3'>
             <div style='text-align: center'>
+<!--              <strong>-->
+<!--                All unit for this books-->
+<!--              </strong>-->
               <strong>
-                All unit for this books
+                Всі копії даної книги
               </strong>
             </div>
           </div>
@@ -68,8 +83,10 @@
               <tr>
                 <th><em class='fa fa-cog'></em></th>
                 <th class='hidden-xs'>ID</th>
-                <th class='hidden-xs'>Available</th>
-                <th class='hidden-xs'>Owner</th>
+<!--                <th class='hidden-xs'>Available</th>-->
+<!--                <th class='hidden-xs'>Owner</th>-->
+                <th class='hidden-xs'>Наявність</th>
+                <th class='hidden-xs'>Взята користувачем</th>
               </tr>
             </thead>
             <tbody>
