@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   namespace :for_user do
     resources :authors, only: [:index, :show]
     resources :books, only: [:index, :show]
-    resources :bookings, only: [:index, :create]
+    resources :bookings, only: [:index, :create, :destroy]
     get '/bookings/show/taken/books', to: 'books#show_taken_books', as: 'show_taken_books'
     get '/bookings/show/readed/books', to: 'books#show_readed_books', as: 'readed_books'
   end

@@ -23,6 +23,7 @@
               <th>User Name</th>
               <th>Book Name</th>
               <th>Author book</th>-->
+              <th><em class='fa fa-cog'></em></th>
               <th class='hidden-xs'>ID</th>
               <th class='hidden-xs'>Копія ID</th>
               <th>Покаток замовлення</th>
@@ -36,7 +37,17 @@
           </thead>
           <tbody>
             <% @bookings.each do |booking| %>
+
               <tr>
+                <% if  booking.status == "expectation" %>
+                  <td align='center'>
+                    <%= link_to for_user_booking_path(booking), method: :delete, data: {confirm: 'Are you sure?'}, class: ' btn btn-danger fa fa-trash' do %>
+                    <% end %>
+                  </td>
+                <% else %>
+                  <td>
+                  </td>
+                <% end %>
                 <% if @books_booking[booking] %>
                   <td><%= link_to booking.id, for_user_book_path(@books_booking[booking]) %></td>
                   <td><%= link_to booking.unit_id, for_user_book_path(@books_booking[booking]) %></td>
