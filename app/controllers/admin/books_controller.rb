@@ -20,6 +20,8 @@ module Admin
       @units.each do |unit|
         @units_owner_name[unit] = unit.bookings.by_status(:taken).first.user.username unless unit.bookings.by_status(:taken).first.nil?
       end
+      @free_units_count = Unit.unit_available(true, @book.id).count
+      @taken_units_count = Unit.unit_available(false, @book.id).count
     end
 
     def new

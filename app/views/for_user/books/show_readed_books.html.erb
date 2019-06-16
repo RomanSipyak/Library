@@ -10,7 +10,7 @@
 <!--                Books that you read-->
 <!--              </strong>-->
               <strong>
-                Книги які ви прочитали
+                Ваші прочитані книги
               </strong>
             </div>
           </div>
@@ -44,7 +44,7 @@
                   <td>Категорія: не існує</td><br>
                 <% end %>
                 <% unless book.author.nil? || book.author.name.nil? %>
-                  <td><%= link_to book.author.name, for_user_book_path(book.id) %></td>
+                  <td><%= link_to book.author.name, for_user_author_path(book.author.id) %></td>
                 <% else %>
 <!--                  <td>Author: not exist</td><br>-->
                   <td>Автор: не існує</td><br>

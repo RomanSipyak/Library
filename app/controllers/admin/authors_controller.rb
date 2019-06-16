@@ -4,7 +4,7 @@ module Admin
     skip_before_action :authenticate_user!, on: %i[index]
 
     def index
-      @authors = Author.all.page params[:page]
+      @authors = Author.filter(params.slice(:by_name)).page params[:page]
     end
 
     def show
