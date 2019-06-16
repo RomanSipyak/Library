@@ -49,7 +49,12 @@ module Admin
         render :new
       end
     end
-
+    def recovery
+      @book = Book.find(params[:book_id])
+      @book.in_history = false
+      @book.save
+      redirect_to admin_books_path
+    end
     def destroy
       @book = Book.find_by(id: params[:id])
       if @book

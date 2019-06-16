@@ -21,6 +21,7 @@ class Book < ApplicationRecord
   scope :by_language_ids, ->(by_language_ids) {where(arel_table[:language_id].in(by_language_ids))}
   scope :by_authors_ids, ->(by_authors_ids) {where(arel_table[:author_id].in(by_authors_ids))}
   scope :by_year, ->(by_year) {where(arel_table[:year].eq(by_year))}
+  scope :by_history, ->(by_history) {where(arel_table[:in_history].eq(by_history))}
   scope :by_category_ids, ->(by_category_ids) do
     joins(:category).where(categories: {id: by_category_ids})
   end
