@@ -46,11 +46,11 @@
               <li>Кількість замовлених екземплятів:<%= @book.units_count - @free_units_count[@book] %></li>
               <li>Ймовірно книга буде доступна через:<%= @day_whan_this_book_by_able %> днів</li>
               <!--              TODO виправити це-->
-              <% if user_signed_in? && current_user.admin %>
+              <% if user_signed_in?  %>
                 <li>
                   <%= form_tag new_estimate_path, method: :get do %>
                     <%= hidden_field_tag 'book_id', @book.id %>
-                    <%= submit_tag 'Add estimate', class: 'btn btn-sm btn-primary' %>
+                    <%= submit_tag 'Додати оцінку', class: 'btn btn-sm btn-primary' %>
                   <% end %>
                 </li>
               <% end %>
