@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   belongs_to :category, counter_cache: :books_count
   belongs_to :language, counter_cache: :books_count
   has_many :units, dependent: :destroy
+  has_many :bookings, through: :units
   has_many :estimates, dependent: :destroy
   has_many :users, through: :estimates
 

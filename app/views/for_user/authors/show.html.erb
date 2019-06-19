@@ -6,16 +6,20 @@
           <div class='col-lg-12'>
             <div class='row'>
               <div class='col-md-12' style="margin-bottom: 5px">
-                <%= image_tag @author.image_url, class: "img-responsive" if @author.image_url %>
+                <% if @author.image_url %>
+                  <%= image_tag @author.image_url, class: "img-responsive" %>
+                <% else %>
+                  <img alt='User Pic' src='http://localhost:3000/assets/17241-200.png' class='img-rounded img-responsive'>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class='col-md-12 '>
-<!--            <p style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: groove; border-width: 4px;'>-->
-<!--              Author Name:<%#= @author.name %>-->
-<!--            </p>-->
+            <!--            <p style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: groove; border-width: 4px;'>-->
+            <!--              Author Name:<%#= @author.name %>-->
+            <!--            </p>-->
             <p style='background-color: #fcaf58a6; border-radius: 7px; margin: 8px; padding: 5px; border: groove; border-width: 4px;'>
               Ім'я автора: <%= @author.name %>
             </p>
@@ -37,9 +41,9 @@
             <div class='row'>
               <div class='col col-md-6 col-md-offset-3'>
                 <div style='text-align: center'>
-<!--                  <strong>
-                    All author's books in this library
-                  </strong>-->
+                  <!--                  <strong>
+                                      All author's books in this library
+                                    </strong>-->
                   <strong>
                     Книги автора у бібліотеці
                   </strong>
@@ -51,37 +55,40 @@
           <div class='panel-body table-responsive'>
             <table class='table table-striped table-bordered table-hover table-list'>
               <thead>
-                <tr>
-<!--                  <th>Title</th>-->
-<!--                  <th>Year of release</th>-->
-<!--                  <th>Category</th>-->
-<!--                  <th>Author</th>-->
-<!--                  <th>Rating:</th>-->
-<!--                  <th>Description</th>-->
-                  <th>Назва</th>
-                  <th>Рік випуску</th>
-                  <th>Категорія</th>
-                  <th>Автор</th>
-                  <th>Рейтинг:</th>
-                  <th>Опис</th>
-                </tr>
+              <tr>
+                <!--                  <th>Title</th>-->
+                <!--                  <th>Year of release</th>-->
+                <!--                  <th>Category</th>-->
+                <!--                  <th>Author</th>-->
+                <!--                  <th>Rating:</th>-->
+                <!--                  <th>Description</th>-->
+                <th>Назва</th>
+                <th>Рік випуску</th>
+                <th>Категорія</th>
+                <th>Автор</th>
+                <th>Рейтинг:</th>
+                <th>Опис</th>
+              </tr>
               </thead>
               <tbody>
-                <% @author.books.each do |book| %>
+              <% @author.books.each do |book| %>
+                <% if book.in_history == false %>
                   <tr>
                     <td><%= link_to book.title, for_user_book_path(book.id) %></td>
                     <td><%= link_to book.year, for_user_book_path(book.id) %></td>
                     <% unless book.category.nil? || book.category.title.nil? %>
                       <td><%= link_to book.category.title, for_user_book_path(book.id) %></td>
                     <% else %>
-<!--                      <td>Category: not exist</td><br>-->
-                      <td>Категорія: не існує</td><br>
+                      <!--                      <td>Category: not exist</td><br>-->
+                      <td>Категорія: не існує</td>
+                      <br>
                     <% end %>
                     <% unless book.author.nil? || book.author.name.nil? %>
                       <td><%= link_to book.author.name, for_user_book_path(book.id) %></td>
                     <% else %>
-<!--                      <td>Author: not exist</td><br>-->
-                      <td>Автор: не існує</td><br>
+                      <!--                      <td>Author: not exist</td><br>-->
+                      <td>Автор: не існує</td>
+                      <br>
                     <% end %>
                     <td><%= book.rating %></td>
                     <% if book.description.length < 30 %>
@@ -91,6 +98,7 @@
                     <% end %>
                   </tr>
                 <% end %>
+              <% end %>
               </tbody>
             </table>
           </div>

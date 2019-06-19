@@ -4,7 +4,11 @@
       <div class='col-lg-6 col-md-6 col-sm-12 '>
         <div class='row'>
           <div class='col-md-12' style="margin-bottom: 5px">
-            <%= image_tag @author.image_url, class: "img-responsive" if @author.image_url %>
+            <% if @author.image_url %>
+              <%= image_tag @author.image_url, class: "img-responsive" %>
+            <% else %>
+              <img alt='User Pic' src='http://localhost:3000/assets/17241-200.png' class='img-rounded img-responsive'>
+            <% end %>
           </div>
         </div>
       </div>

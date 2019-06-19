@@ -23,6 +23,10 @@
           <%= f.label :password_confirmation %><br/>
           <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control', placeholder: 'Your Confirmation *' %>
         </div>
+        <div class='field'>
+          <%= f.label :image %><br />
+          <%= f.file_field :image, class: 'form-control'%>
+        </div>
         <div style='margin-top: 11px'>
           <%= f.submit 'Sign up', class: 'form-control', class: 'btnSubmit' %>
         </div>

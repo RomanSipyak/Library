@@ -2,10 +2,14 @@
   <div class='row'>
     <% @authors.each do |author| %>
       <div class='col-sm-6 col-md-4 article'>
-        <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;'>
+        <div class='thumbnail' style='outline-style: solid; outline-radius: 7px; background-color: #ddaa68e6;  max-height: 300px; overflow-y: auto'>
           <div class='row'>
             <div class='col-md-12' style="margin-bottom: 5px">
-              <%= image_tag author.image_url, class: "img-responsive" if author.image_url %>
+              <% if author.image_url %>
+                <%= image_tag author.image_url, class: "img-responsive" %>
+              <% else %>
+                <img alt='User Pic' src='http://localhost:3000/assets/17241-200.png' class='img-rounded img-responsive'>
+              <% end %>
             </div>
           </div>
 

@@ -60,6 +60,7 @@ module Admin
       if @book
         if @book.update(in_history: true)
           @book.units.update_all(in_history: true, updated_at: DateTime.now)
+          @book.bookings.by_status(:expectation).destroy_all
           redirect_to admin_books_path
         end
       end
